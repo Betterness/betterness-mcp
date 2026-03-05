@@ -10,7 +10,11 @@ Betterness is the first health and wellness platform with a native [Model Contex
 
 Sign up at [betterness.ai/mcp](https://www.betterness.ai/mcp) and generate an API key from the Developer Dashboard.
 
-### 2. Configure Claude Desktop
+### 2. Connect Your AI Agent
+
+The Betterness MCP server uses **SSE (Server-Sent Events) transport** with **Bearer token authentication**. Any MCP-compatible AI agent can connect.
+
+#### Claude Desktop
 
 Add to your `claude_desktop_config.json`:
 
@@ -27,6 +31,54 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+#### Claude Code (CLI)
+
+Add to your `.mcp.json` or project settings:
+
+```json
+{
+  "mcpServers": {
+    "betterness": {
+      "type": "url",
+      "url": "https://api.betterness.ai/sse",
+      "headers": {
+        "Authorization": "Bearer bk_your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+#### Any MCP Client / AI Agent / Clawbot
+
+To connect any MCP-compatible agent (including Augmented Games Clawbots):
+
+- **Transport:** SSE (Server-Sent Events)
+- **URL:** `https://api.betterness.ai/sse`
+- **Authentication:** HTTP header `Authorization: Bearer bk_your-api-key-here`
+- **Protocol:** MCP 2024-11-05
+
+The SSE connection returns a session endpoint. Send JSON-RPC messages to that endpoint:
+
+```
+1. Connect to SSE:  GET https://api.betterness.ai/sse
+   → Receives: event:endpoint, data:/mcp/message?sessionId=<id>
+
+2. Initialize:      POST https://api.betterness.ai/mcp/message?sessionId=<id>
+   Body: {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"your-agent","version":"1.0"}}}
+
+3. Notify ready:    POST https://api.betterness.ai/mcp/message?sessionId=<id>
+   Body: {"jsonrpc":"2.0","method":"notifications/initialized"}
+
+4. List tools:      POST https://api.betterness.ai/mcp/message?sessionId=<id>
+   Body: {"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}
+
+5. Call a tool:     POST https://api.betterness.ai/mcp/message?sessionId=<id>
+   Body: {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"getUserContactData","arguments":{}}}
+```
+
+All responses are delivered via the SSE stream, not in the HTTP response body.
+
 ### 3. Test the Connection
 
 ```bash
@@ -35,9 +87,11 @@ curl -s https://api.betterness.ai/sse \
   -H "Accept: text/event-stream"
 ```
 
+You should see an `event:endpoint` message with a session ID — that means your key works.
+
 ---
 
-## Tools
+## Tools (18 available)
 
 ### User Profile
 
@@ -48,6 +102,14 @@ Returns the authenticated user's contact information: first name, last name, ema
 Use this early in a conversation to identify the user and personalize responses. The data comes from the user's Betterness account profile.
 
 **Returns:** YAML with `firstName`, `lastName`, `email`, `phone`.
+
+#### `getUserWellnessProfile()`
+
+Returns the user's self-reported wellness profile — health goals, existing conditions, exercise habits, dietary preferences, sleep patterns, and lifestyle details.
+
+This is NOT wearable data. It reflects what the user reported during onboarding. Use it to understand context and personalize recommendations.
+
+**Returns:** Text summary.
 
 ---
 
@@ -202,11 +264,24 @@ Returns lab order statuses only (does not include uploaded results). Use `getUse
 
 ---
 
+### Knowledge Base
+
+#### `searchKnowledge(query)`
+
+Searches the Betterness wellness knowledge base for evidence-based health insights. Returns both curated content and the user's personal synced knowledge.
+
+- `query` (required) — search query text
+
+**Returns:** JSON with relevant knowledge entries.
+
+---
+
 ## Developer Tips
 
 - **Check devices first.** If a health data tool returns empty, call `listConnectedDevices` to see if the user has a relevant wearable.
 - **Pass the user's timezone** via `zoneId` so daily aggregations align with their local day.
-- **Use 7–30 day ranges** for health data. Very large ranges return a lot of data.
+- **Use 7-30 day ranges** for health data. Very large ranges return a lot of data.
+- **Start with the profile.** Call `getUserContactData` and `getUserWellnessProfile` first to personalize the conversation.
 - **Biomarker workflow:** `getLoincCodes` → `searchBiomarkers` → if missing, `listAvailableLabTests` to suggest a test → `getUserLabData` to check if one is in progress.
 - **Device connection workflow:** `getAvailableIntegrations` → user picks a provider → `generateUserLinkToken` → show `linkWebUrl` → `disconnectIntegration` to remove.
 
