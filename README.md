@@ -2,7 +2,7 @@
 
 Betterness is the first health and wellness platform with a native [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Connect your wearables, labs, and health profile to any AI assistant.
 
-**Endpoint:** `https://api.betterness.ai/sse` (SSE transport)
+**Endpoint:** `https://api.betterness.ai/mcp` (Streamable HTTP transport)
 
 ## Quick Start
 
@@ -12,17 +12,17 @@ Sign up at [betterness.ai/mcp](https://www.betterness.ai/mcp) and generate an AP
 
 ### 2. Connect Your AI Agent
 
-The Betterness MCP server uses **SSE (Server-Sent Events) transport** with **Bearer token authentication**. Any MCP-compatible AI agent can connect.
+The Betterness MCP server uses **Streamable HTTP transport** with **Bearer token authentication**. Any MCP-compatible AI agent can connect.
 
 #### Claude Desktop
 
-Add to your `claude_desktop_config.json`:
+Add to your `claude_desktop_config.json` (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "betterness": {
-      "url": "https://api.betterness.ai/sse",
+      "url": "https://api.betterness.ai/mcp",
       "headers": {
         "Authorization": "Bearer bk_your-api-key-here"
       }
@@ -40,7 +40,7 @@ Add to your `.mcp.json` or project settings:
   "mcpServers": {
     "betterness": {
       "type": "url",
-      "url": "https://api.betterness.ai/sse",
+      "url": "https://api.betterness.ai/mcp",
       "headers": {
         "Authorization": "Bearer bk_your-api-key-here"
       }
@@ -49,67 +49,79 @@ Add to your `.mcp.json` or project settings:
 }
 ```
 
-#### Any MCP Client / AI Agent / Clawbot
+#### Cursor
 
-To connect any MCP-compatible agent (including Augmented Games Clawbots):
+Add to `.cursor/mcp.json` in your project root:
 
-- **Transport:** SSE (Server-Sent Events)
-- **URL:** `https://api.betterness.ai/sse`
+```json
+{
+  "mcpServers": {
+    "betterness": {
+      "url": "https://api.betterness.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer bk_your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+#### Windsurf
+
+Add via Windsurf's MCP settings panel with the same URL and authorization header.
+
+#### OpenClaw
+
+1. Go to **Settings → MCP Servers → Add Server**
+2. Set URL to: `https://api.betterness.ai/mcp`
+3. Add header: `Authorization: Bearer bk_your-api-key-here`
+4. Save — your Clawbot now has access to all 26 health data tools
+
+#### Any MCP Client / AI Agent
+
+- **Transport:** Streamable HTTP
+- **URL:** `https://api.betterness.ai/mcp`
 - **Authentication:** HTTP header `Authorization: Bearer bk_your-api-key-here`
 - **Protocol:** MCP 2024-11-05
 
-The SSE connection returns a session endpoint. Send JSON-RPC messages to that endpoint:
+Send JSON-RPC requests directly via POST:
 
 ```
-1. Connect to SSE:  GET https://api.betterness.ai/sse
-   → Receives: event:endpoint, data:/mcp/message?sessionId=<id>
+POST https://api.betterness.ai/mcp
+Content-Type: application/json
+Authorization: Bearer bk_your-api-key-here
 
-2. Initialize:      POST https://api.betterness.ai/mcp/message?sessionId=<id>
-   Body: {"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"your-agent","version":"1.0"}}}
-
-3. Notify ready:    POST https://api.betterness.ai/mcp/message?sessionId=<id>
-   Body: {"jsonrpc":"2.0","method":"notifications/initialized"}
-
-4. List tools:      POST https://api.betterness.ai/mcp/message?sessionId=<id>
-   Body: {"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}
-
-5. Call a tool:     POST https://api.betterness.ai/mcp/message?sessionId=<id>
-   Body: {"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"getUserContactData","arguments":{}}}
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"your-agent","version":"1.0"}}}
 ```
-
-All responses are delivered via the SSE stream, not in the HTTP response body.
 
 ### 3. Test the Connection
 
 ```bash
-curl -s https://api.betterness.ai/sse \
+curl -X POST https://api.betterness.ai/mcp \
   -H "Authorization: Bearer bk_your-api-key-here" \
-  -H "Accept: text/event-stream"
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}'
 ```
 
-You should see an `event:endpoint` message with a session ID — that means your key works.
+You should receive a JSON-RPC response with server capabilities — that means your key works.
 
 ---
 
-## Tools (18 available)
+## Tools (26 available)
 
 ### User Profile
 
 #### `getUserContactData()`
 
-Returns the authenticated user's contact information: first name, last name, email, and phone number.
+Returns the authenticated user's profile: name, email, phone, gender, date of birth, and home address. Use before purchasing a lab test — purchases require gender, phone, birthdate, and a complete home address.
 
-Use this early in a conversation to identify the user and personalize responses. The data comes from the user's Betterness account profile.
+**Returns:** YAML
 
-**Returns:** YAML with `firstName`, `lastName`, `email`, `phone`.
+#### `updateUserContactData(firstName?, lastName?, phone?, phoneDialCode?, gender?, birthDate?, addressFullAddress?, addressCity?, addressState?, addressZipCode?, addressCountry?)`
 
-#### `getUserWellnessProfile()`
+Updates the current user's profile information. All parameters optional — only provided fields are updated. Always confirm changes with the user before calling.
 
-Returns the user's self-reported wellness profile — health goals, existing conditions, exercise habits, dietary preferences, sleep patterns, and lifestyle details.
-
-This is NOT wearable data. It reflects what the user reported during onboarding. Use it to understand context and personalize recommendations.
-
-**Returns:** Text summary.
+**Returns:** JSON
 
 ---
 
@@ -117,38 +129,27 @@ This is NOT wearable data. It reflects what the user reported during onboarding.
 
 #### `listConnectedDevices()`
 
-Lists the user's currently active wearable and health data connections — for example Apple Health, Garmin, Oura, Withings, Eight Sleep, or Peloton.
+Lists the user's currently active wearable and health data connections (Apple Health, Garmin, Oura, Withings, Eight Sleep, Peloton). Call before querying any health data tool. Only returns active connections.
 
-Call this before querying any health data tool. If a health data tool returns empty results, this tool tells you whether the user actually has a relevant device connected. Only returns active connections; disconnected or disabled integrations are excluded.
-
-**Returns:** YAML list of active providers with connection date.
+**Returns:** YAML
 
 #### `getAvailableIntegrations()`
 
-Lists health device integrations the user can connect — providers that are either not yet connected or were previously disconnected.
+Lists health device integrations the user can connect — providers not yet connected or previously disconnected. Available: `GARMIN`, `OURA`, `PELOTON`, `WAHOO`, `EIGHT_SLEEP`, `WITHINGS`.
 
-Available providers: `GARMIN`, `OURA`, `PELOTON`, `WAHOO`, `EIGHT_SLEEP`, `WITHINGS`. Apple Health requires the mobile app and is not available through this flow.
-
-**Returns:** YAML list with provider `key`, human-readable `name`, and `description`.
+**Returns:** YAML
 
 #### `generateUserLinkToken(integrationKey, redirectUrl)`
 
-Generates a connection link for a specific health device integration. The user must open the returned URL in their browser to authorize the connection on the provider's side.
-
-- `integrationKey` (required) — provider key from `getAvailableIntegrations` (e.g. `GARMIN`, `OURA`)
-- `redirectUrl` (required) — URL to redirect the user to after they complete the authorization
-
-Returns an error if the user is already connected to the specified provider. Show the `linkWebUrl` to the user so they can click it.
+Generates a connection link for a specific health device integration. The user must open the returned URL in their browser to authorize the connection.
 
 **Returns:** JSON with `linkToken`, `linkWebUrl`, and `provider`.
 
 #### `disconnectIntegration(integrationKey)`
 
-Disconnects a health device integration, removing the connection between the user and the specified provider. Disables the connection locally and deregisters from the provider.
+Disconnects a health device integration. Disables the connection locally and deregisters from the provider.
 
-- `integrationKey` (required) — provider key to disconnect (e.g. `GARMIN`, `OURA`)
-
-**Returns:** Success or error message.
+**Returns:** Text
 
 ---
 
@@ -158,45 +159,33 @@ These tools pull measured data from connected wearables. All require `from` and 
 
 #### `getActivityData(from, to, activityTypes?, zoneId?)`
 
-Returns daily activity metrics and workout sessions from connected wearables and apps (Apple HealthKit, Strava, Garmin, Peloton, Wahoo).
+Returns daily activity metrics and workout sessions from connected wearables (Apple HealthKit, Strava, Garmin, Peloton, Wahoo). Includes steps, distance, calories, VO2 max, floors, and workouts.
 
-Includes steps, distance, active and basal calories, floors climbed, VO2 max, and workout sessions (running, cycling, yoga, weightlifting, swimming, hiking, etc.) with duration and details.
-
-Use `activityTypes` (comma-separated, e.g. `"RUNNING,YOGA"`) to narrow results when the user asks about a specific activity type.
-
-**Returns:** YAML with daily activity data and workout sessions.
+**Returns:** YAML
 
 #### `getVitals(from, to, zoneId?)`
 
-Returns vital sign measurements from connected wearables and apps (Apple HealthKit, Oura, Garmin, Withings).
+Returns vital sign measurements: heart rate, HRV, blood pressure, SpO2, glucose, respiratory rate.
 
-Includes heart rate, heart rate variability (HRV), blood pressure (systolic/diastolic), blood oxygen (SpO2), glucose, and respiratory rate for each day in the requested range.
-
-**Returns:** YAML with daily vital sign data.
+**Returns:** YAML
 
 #### `getSleepData(from, to, zoneId?)`
 
-Returns nightly sleep summaries from connected wearables and apps (Apple HealthKit, Oura, Eight Sleep, Garmin).
+Returns nightly sleep summaries with time in bed, total asleep, and stage breakdown (deep, light/core, REM, awake).
 
-Includes time in bed, total time asleep, and a breakdown by sleep stage (deep, light/core, REM, awake) for each night in the requested range. For detailed sleep cycle analysis, use `getSleepStages` instead.
-
-**Returns:** YAML with nightly sleep data.
+**Returns:** YAML
 
 #### `getSleepStages(from, to, zoneId?)`
 
-Returns minute-by-minute sleep stage transitions from connected wearables (Apple HealthKit, Oura, Eight Sleep, Garmin).
+Returns minute-by-minute sleep stage transitions. More granular than `getSleepData`.
 
-Each entry contains the stage name (Deep, Core, REM, Awake), start time, end time, and duration. Entries are grouped by night. More granular than `getSleepData` — use it when the user wants cycle-level detail.
-
-**Returns:** YAML with chronological sleep stage transitions grouped by night date.
+**Returns:** YAML
 
 #### `getBodyComposition(from, to, zoneId?)`
 
-Returns body composition measurements from connected devices (Apple HealthKit, Withings, Garmin).
+Returns body composition measurements: weight, body fat %, body water %, muscle mass %, bone mass %, visceral fat index, BMI, lean mass, waist circumference.
 
-Includes weight, body fat %, body water %, muscle mass %, bone mass %, visceral fat index, BMI, lean body mass, and waist circumference.
-
-**Returns:** YAML with daily body composition data.
+**Returns:** YAML
 
 ---
 
@@ -204,32 +193,21 @@ Includes weight, body fat %, body water %, muscle mass %, bone mass %, visceral 
 
 #### `searchBiomarkers(biomarkerExternalId?, biomarkerLoincCode?, searchParam?, name?, startDate?, endDate?, categories?, range?)`
 
-Searches and filters the user's biomarker lab results. Returns values with reference ranges and categories.
+Searches and filters the user's biomarker lab results. Returns values with reference ranges and categories. All parameters optional.
 
-All parameters are optional:
-- `biomarkerExternalId` — filter by specific biomarker ID
-- `biomarkerLoincCode` — filter by LOINC code (use `getLoincCodes` to find valid codes)
-- `searchParam` — free-text search across biomarker names
-- `name` — exact biomarker name filter
-- `startDate` / `endDate` — ISO-8601 date range (e.g. `"2025-01-01T00:00:00Z"` or `"2025-01-01"`)
-- `categories` — comma-separated categories (e.g. `"METABOLIC,HORMONAL"`)
-- `range` — `OPTIMAL`, `AVERAGE`, `OUT_OF_RANGE`, or `UNKNOWN`
-
-**Returns:** JSON with biomarker values, reference ranges, and categories.
+**Returns:** JSON
 
 #### `getLoincCodes()`
 
 Returns all available LOINC codes — a reference list of standardized biomarker identifiers with names and descriptions.
 
-Use this to look up valid LOINC codes before filtering with `searchBiomarkers`.
-
-**Returns:** JSON list of LOINC codes with names and descriptions.
+**Returns:** JSON
 
 #### `getBiologicalAge()`
 
-Returns the user's biological age history — a series of assessments showing how the user's biological age compares to their calendar age, with the contributing biomarker values for each assessment.
+Returns the user's biological age history — assessments showing biological age vs calendar age with contributing biomarker values.
 
-**Returns:** JSON list of biological age results with calendar age, biological age, and biomarker values.
+**Returns:** JSON
 
 ---
 
@@ -237,42 +215,123 @@ Returns the user's biological age history — a series of assessments showing ho
 
 #### `listAvailableLabTests(query?, isPopular?)`
 
-Lists lab tests available for ordering through Betterness.
+Lists lab tests available for ordering. Returns objectKey (needed for purchasing), name, description, lab, price, isPopular, and included biomarkers.
 
-- `query` (optional) — free-text search to filter by test name or description
-- `isPopular` (optional) — `"true"` for popular tests only, `"false"` for non-popular only
-
-Use this after finding a biomarker gap (e.g. no recent Vitamin D results) to suggest a specific test the user can order.
-
-**Returns:** JSON array of tests with `externalId`, `name`, `description`, `lab`, `price`, `isPopular`, and `markers`.
+**Returns:** JSON
 
 #### `getUserLabData(externalId?, startDate?, endDate?)`
 
-Returns the user's lab data in a unified format — both lab orders placed through Betterness and lab results uploaded by the user.
+Returns the user's lab data in a unified format — both Betterness lab orders and uploaded results. Each item includes `status`, `statusDescription`, and `nextStep` fields that guide the agent on what to do next.
 
-- `externalId` (optional) — filter to a specific order or result
-- `startDate` (optional, `yyyy-MM-dd`) — only items collected on or after this date
-- `endDate` (optional, `yyyy-MM-dd`) — only items collected on or before this date
-
-**Returns:** JSON array with `source` (`"order"` or `"result"`), `externalId`, `name`, `status`, `dateCollected`, `dateCreated`.
+**Returns:** JSON
 
 #### `getLabOrderStatus(orderId?)` *(deprecated)*
 
-Returns lab order statuses only (does not include uploaded results). Use `getUserLabData` instead.
-
-**Returns:** JSON.
+Use `getUserLabData` instead.
 
 ---
 
-### Knowledge Base
+### Purchases & Payments
 
-#### `searchKnowledge(query)`
+#### `listSavedPaymentMethods()`
 
-Searches the Betterness wellness knowledge base for evidence-based health insights. Returns both curated content and the user's personal synced knowledge.
+Lists the user's saved payment methods. Returns card brand, last 4 digits, expiration, default status, and `externalId` needed for `purchaseLabTest`. If empty, use the checkout flow.
 
-- `query` (required) — search query text
+**Returns:** JSON
 
-**Returns:** JSON with relevant knowledge entries.
+#### `purchaseLabTest(labTestObjectKey, paymentMethodExternalId, promotionCode?)`
+
+Purchases a lab test using a saved payment method. Always verify required profile fields and confirm with the user before calling. Charged immediately.
+
+**Returns:** JSON
+
+#### `purchaseLabTestWithCheckout(labTestObjectKey, successUrl, cancelUrl, promotionCode?)`
+
+Generates a Stripe Checkout payment link for users without saved payment methods. Share the complete `checkoutUrl` — never truncate it. Order is created automatically after payment via webhook.
+
+**Returns:** JSON
+
+---
+
+### Lab Order Management
+
+#### `initializeLabOrder(labOrderExternalId)`
+
+Initializes a lab order in "Paid" status, submitting it to the lab for processing. Requires complete user profile.
+
+**Returns:** JSON
+
+#### `searchLabServiceCenters(zipCode, labOrderExternalId)`
+
+Searches for blood draw locations (Patient Service Centers) near a ZIP code. Use after an order reaches "Requisition Created" status.
+
+**Returns:** JSON
+
+#### `getServiceCenterSlots(siteCode, labOrderExternalId, timezone, startDate?, rangeDays?)`
+
+Gets available appointment time slots at a specific service center. Returns `bookingKey` needed to book.
+
+**Returns:** JSON
+
+#### `bookLabAppointment(labOrderExternalId, bookingKey, timezone)`
+
+Books a blood draw appointment. Use for "Requisition Created" or "Appointment Cancelled" orders. Do NOT use to reschedule — use `rescheduleLabAppointment` instead.
+
+**Returns:** JSON
+
+#### `rescheduleLabAppointment(labOrderExternalId, bookingKey, timezone)`
+
+Reschedules an existing appointment. Only works for "Appointment Scheduled" status. Previous appointment is cancelled automatically.
+
+**Returns:** JSON
+
+#### `cancelLabAppointment(labOrderExternalId, reasonId?)`
+
+Cancels a blood draw appointment. Call without `reasonId` first to get cancellation reasons, then call again with the chosen `reasonId`.
+
+**Returns:** JSON
+
+---
+
+## Order Status Reference
+
+Every lab order returned by `getUserLabData` includes a status. Here's what each means and what to do next.
+
+| Status | Description | Action |
+|--------|-------------|--------|
+| **Paid** | Payment received, not yet submitted | Complete profile → `initializeLabOrder` |
+| **Order Submitted** | Awaiting lab processing | Wait for requisition |
+| **Requisition Created** | Lab requisition ready | `searchLabServiceCenters` → `getServiceCenterSlots` → `bookLabAppointment` |
+| **Appointment Pending** | Being confirmed | Wait for confirmation |
+| **Appointment Scheduled** | Blood draw booked | User visits lab. Can reschedule or cancel |
+| **Appointment Cancelled** | Was cancelled | Book new with `bookLabAppointment` |
+| **Redraw Available** | New sample needed | Schedule new appointment |
+| **Partial Results** | Some results available | View with `searchBiomarkers`, wait for rest |
+| **Completed** | All results available | `searchBiomarkers` + `getBiologicalAge` |
+| **Failed** | Error occurred | Contact support or reorder |
+| **Cancelled** | Order cancelled | Order new test |
+
+---
+
+## Common Flows
+
+### "Buy a Lab Test" — Full 7-Step Lifecycle
+
+1. **Ensure profile complete** → `getUserContactData` → `updateUserContactData` if needed
+2. **Browse tests** → `listAvailableLabTests`
+3. **Pay** → `listSavedPaymentMethods` → `purchaseLabTest` OR `purchaseLabTestWithCheckout`
+4. **Initialize if needed** → `getUserLabData` → `initializeLabOrder`
+5. **Schedule** → `searchLabServiceCenters` → `getServiceCenterSlots` → `bookLabAppointment`
+6. **Manage** → `rescheduleLabAppointment` / `cancelLabAppointment`
+7. **View results** → `searchBiomarkers` + `getBiologicalAge`
+
+### "How am I doing?" — Health Overview
+
+1. `getUserContactData()` — Identify the user
+2. `listConnectedDevices()` — See available data sources
+3. `getVitals` / `getSleepData` / `getActivityData` — Pull wearable data
+4. `searchBiomarkers()` — Check recent lab results
+5. `getBiologicalAge()` — Summarize with biological age trend
 
 ---
 
@@ -281,7 +340,7 @@ Searches the Betterness wellness knowledge base for evidence-based health insigh
 - **Check devices first.** If a health data tool returns empty, call `listConnectedDevices` to see if the user has a relevant wearable.
 - **Pass the user's timezone** via `zoneId` so daily aggregations align with their local day.
 - **Use 7-30 day ranges** for health data. Very large ranges return a lot of data.
-- **Start with the profile.** Call `getUserContactData` and `getUserWellnessProfile` first to personalize the conversation.
+- **Start with the profile.** Call `getUserContactData` first to personalize the conversation.
 - **Biomarker workflow:** `getLoincCodes` → `searchBiomarkers` → if missing, `listAvailableLabTests` to suggest a test → `getUserLabData` to check if one is in progress.
 - **Device connection workflow:** `getAvailableIntegrations` → user picks a provider → `generateUserLinkToken` → show `linkWebUrl` → `disconnectIntegration` to remove.
 
