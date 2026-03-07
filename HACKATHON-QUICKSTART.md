@@ -66,11 +66,13 @@ Add to `.mcp.json` in your project root:
 
 ### ChatGPT (Custom GPT)
 
-Create a Custom GPT with Actions pointing to `https://api.betterness.ai/mcp`. Use the Bearer token auth with your `bk_...` key.
+Create a Custom GPT with Actions only if your Action layer handles the MCP 3-step handshake (`initialize` → `notifications/initialized` → `tools/call`). For most teams, use a small backend proxy API and have the GPT call that proxy instead.
 
 ### Any AI Agent (REST)
 
 See the [MCP Integration Guide](./MCP-INTEGRATION-GUIDE.md) for the full HTTP protocol.
+
+> **Apple Health note:** Apple Health connection is done in the Junction (formerly Vital) app (Junction SDK flow), not via MCP `generateUserLinkToken`. Once connected in-app, the data is available via MCP.
 
 ---
 
@@ -117,9 +119,9 @@ Your AI handles the MCP tool calls automatically.
 | `purchaseLabTestWithCheckout` | Returns Stripe checkout URL to buy a panel |
 | `searchLabServiceCenters` | Find Quest Diagnostics locations near a ZIP code |
 | `bookLabAppointment` | Schedule a blood draw appointment |
-| `getLabServiceCenterSlots` | Available time slots at a specific Quest location |
-| `getUserPaymentMethods` | List saved payment methods |
-| `deleteUserPaymentMethod` | Remove a saved payment method |
+| `getServiceCenterSlots` | Available time slots at a specific Quest location |
+| `listSavedPaymentMethods` | List saved payment methods |
+| `purchaseLabTest` | Buy a panel directly with a saved payment method |
 
 ### ⌚ Device Connection Agent
 | Tool | What it does |
