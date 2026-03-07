@@ -130,28 +130,86 @@ Use the REST API approach — map MCP tool definitions to Gemini function declar
 
 #### Any MCP Client / REST API
 
+> **⚠️ CRITICAL: 3-Step Handshake Required**
+> The Betterness MCP uses Streamable HTTP transport. You MUST complete all 3 steps below before calling any tool. Skipping step 2 causes tool calls to hang/timeout.
+
 ```
 Transport: Streamable HTTP
 URL: https://api.betterness.ai/mcp
 Auth: Authorization: Bearer bk_your-api-key-here
-Protocol: MCP 2024-11-05
+Protocol: MCP 2025-03-26
 ```
 
+**Step 1 — Initialize session:**
 ```bash
-POST https://api.betterness.ai/mcp
-Content-Type: application/json
-Authorization: Bearer bk_your-api-key-here
-
-{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"your-agent","version":"1.0"}}}
+curl -s -D- -X POST https://api.betterness.ai/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: Bearer bk_your-api-key-here" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"your-agent","version":"1.0.0"}}}'
 ```
+→ Save the `Mcp-Session-Id` response header. You need it for steps 2 and 3.
+
+**Step 2 — Send initialized notification (REQUIRED — do NOT skip):**
+```bash
+curl -s -X POST https://api.betterness.ai/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: Bearer bk_your-api-key-here" \
+  -H "Mcp-Session-Id: SESSION_ID_FROM_STEP_1" \
+  -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
+```
+
+**Step 3 — Call tools (use `tools/call` method, NOT the tool name):**
+```bash
+curl -s -X POST https://api.betterness.ai/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: Bearer bk_your-api-key-here" \
+  -H "Mcp-Session-Id: SESSION_ID_FROM_STEP_1" \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"getUserContactData","arguments":{}}}'
+```
+
+> **Common mistakes that cause timeouts:**
+> - Skipping step 2 (`notifications/initialized`) — the server waits forever
+> - Using `"method":"getUserContactData"` instead of `"method":"tools/call","params":{"name":"getUserContactData"}`
+> - Missing the `Accept: application/json, text/event-stream` header
+> - Missing the `Mcp-Session-Id` header on steps 2-3
+
+**Response format:** Responses are Server-Sent Events (SSE):
+```
+id:abc123
+event:message
+data:{"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"..."}]}}
+```
+Parse the `data:` line — don't `JSON.parse()` the raw response body.
 
 ### 3. Test the Connection
 
+Run all 3 steps to verify your key works:
+
 ```bash
-curl -X POST https://api.betterness.ai/mcp \
-  -H "Authorization: Bearer bk_your-api-key-here" \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}'
+# Full test — save this as test-mcp.sh
+KEY="bk_your-api-key-here"
+URL="https://api.betterness.ai/mcp"
+HEADERS=(-H "Content-Type: application/json" -H "Accept: application/json, text/event-stream" -H "Authorization: Bearer $KEY")
+
+# Step 1: Initialize
+echo "Step 1: Initialize..."
+SID=$(curl -s -D- -X POST "$URL" "${HEADERS[@]}" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"test","version":"1.0.0"}}}' \
+  | grep -i mcp-session-id | tr -d '\r' | awk '{print $2}')
+echo "Session: $SID"
+
+# Step 2: Notify (REQUIRED!)
+echo "Step 2: Notify..."
+curl -s -X POST "$URL" "${HEADERS[@]}" -H "Mcp-Session-Id: $SID" \
+  -d '{"jsonrpc":"2.0","method":"notifications/initialized"}' > /dev/null
+
+# Step 3: Call a tool
+echo "Step 3: Calling listConnectedDevices..."
+curl -s -X POST "$URL" "${HEADERS[@]}" -H "Mcp-Session-Id: $SID" \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"listConnectedDevices","arguments":{}}}'
 ```
 
 ---
