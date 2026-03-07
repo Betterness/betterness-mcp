@@ -138,5 +138,110 @@
     "category": "lifestyle",
     "difficulty": "beginner",
     "mcpTools": ["getSleepData", "getSleepStages", "getVitals", "getActivityData"]
+  },
+  {
+    "id": "gut-health-optimizer",
+    "name": "Gut Health Optimizer",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getSleepData", "getVitals", "getBodyComposition", "getLoincCodes"]
+  },
+  {
+    "id": "iron-deficiency-detective",
+    "name": "Iron Deficiency Detective",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getVitals", "getSleepData", "getLoincCodes", "listAvailableLabTests"]
+  },
+  {
+    "id": "vitamin-d-tracker",
+    "name": "Vitamin D Tracker",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getSleepStages", "getVitals", "getActivityData"]
+  },
+  {
+    "id": "pre-diabetes-monitor",
+    "name": "Pre-Diabetes Monitor",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getSleepData", "getBodyComposition", "getVitals", "getBiologicalAge"]
+  },
+  {
+    "id": "heart-health-scorecard",
+    "name": "Heart Health Scorecard",
+    "category": "clinical",
+    "difficulty": "advanced",
+    "mcpTools": ["searchBiomarkers", "getVitals", "getActivityData", "getBodyComposition", "getSleepData", "getBiologicalAge"]
+  },
+  {
+    "id": "athlete-overtraining-detector",
+    "name": "Athlete Overtraining Detector",
+    "category": "optimization",
+    "difficulty": "advanced",
+    "mcpTools": ["getVitals", "getSleepData", "getSleepStages", "getActivityData", "searchBiomarkers", "getBodyComposition"]
+  },
+  {
+    "id": "pregnancy-wellness",
+    "name": "Pregnancy Wellness Monitor",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getSleepStages", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "post-workout-recovery",
+    "name": "Post-Workout Recovery Analyzer",
+    "category": "optimization",
+    "difficulty": "beginner",
+    "mcpTools": ["getVitals", "getSleepData", "getSleepStages", "getActivityData", "searchBiomarkers", "getBodyComposition"]
+  },
+  {
+    "id": "blood-sugar-optimizer",
+    "name": "Blood Sugar Optimizer",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getSleepData", "getVitals", "getBodyComposition", "getBiologicalAge"]
+  },
+  {
+    "id": "immune-system-check",
+    "name": "Immune System Check",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getSleepStages", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "kidney-function-monitor",
+    "name": "Kidney Function Monitor",
+    "category": "clinical",
+    "difficulty": "advanced",
+    "mcpTools": ["searchBiomarkers", "getVitals", "getActivityData", "getBodyComposition", "getSleepData", "getLoincCodes"]
+  },
+  {
+    "id": "liver-health-check",
+    "name": "Liver Health Check",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getBodyComposition", "getActivityData", "getSleepData", "getVitals", "getBiologicalAge"]
+  },
+  {
+    "id": "allergy-season-prep",
+    "name": "Allergy Season Prep",
+    "category": "lifestyle",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getSleepStages", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "jet-lag-recovery",
+    "name": "Jet Lag Recovery Protocol",
+    "category": "lifestyle",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getSleepStages", "getVitals", "getActivityData", "searchBiomarkers"]
+  },
+  {
+    "id": "couples-health-sync",
+    "name": "Couples Health Sync",
+    "category": "lifestyle",
+    "difficulty": "intermediate",
+    "mcpTools": ["getSleepData", "getSleepStages", "getVitals", "getActivityData", "searchBiomarkers", "getBodyComposition", "getBiologicalAge"]
   }
 ]
