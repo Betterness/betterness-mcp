@@ -8,6 +8,14 @@ Connect wearables, biomarkers, labs, and payments to ChatGPT, Claude, Cursor, Ge
 
 **Get your API key:** [betterness.ai/mcp](https://www.betterness.ai/mcp) — free signup, instant key generation.
 
+### Quick Links
+
+- [Hackathon Quickstart](./HACKATHON-QUICKSTART.md) — Get building in 10 minutes
+- [Integration Guide](./INTEGRATION-GUIDE.md) — Full protocol docs, SSE parsing, BFF patterns
+- [Skills Library](./skills/) — 20 pre-built AI health skill templates
+- [Lab Panels](https://www.betterness.ai/dashboard/labs) — Browse 47+ blood test panels
+- [Devices](https://www.betterness.ai/dashboard/devices) — Connect wearables (Garmin, Oura, Apple Health, etc.)
+
 ---
 
 ## What Can You Build?

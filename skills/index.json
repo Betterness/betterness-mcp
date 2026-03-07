@@ -1,0 +1,142 @@
+[
+  {
+    "id": "sleep-analyst",
+    "name": "Sleep Analyst",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getSleepStages", "getVitals"]
+  },
+  {
+    "id": "oura-deep-dive",
+    "name": "Oura Ring Analyst",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getSleepStages", "getVitals", "getActivityData"]
+  },
+  {
+    "id": "biomarker-decoder",
+    "name": "Biomarker Decoder",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["searchBiomarkers", "getLoincCodes", "getBiologicalAge", "listAvailableLabTests"]
+  },
+  {
+    "id": "male-hormone-optimizer",
+    "name": "Male Hormone Optimizer",
+    "category": "optimization",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getSleepData", "getVitals", "getBodyComposition"]
+  },
+  {
+    "id": "bio-age-reducer",
+    "name": "Biological Age Reducer",
+    "category": "optimization",
+    "difficulty": "intermediate",
+    "mcpTools": ["getBiologicalAge", "searchBiomarkers", "getActivityData", "getSleepData", "getVitals", "getBodyComposition"]
+  },
+  {
+    "id": "recovery-coach",
+    "name": "Recovery Coach",
+    "category": "optimization",
+    "difficulty": "beginner",
+    "mcpTools": ["getVitals", "getSleepData", "getActivityData"]
+  },
+  {
+    "id": "cardio-assessment",
+    "name": "Cardiovascular Assessment",
+    "category": "clinical",
+    "difficulty": "advanced",
+    "mcpTools": ["searchBiomarkers", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "metabolic-health",
+    "name": "Metabolic Health Analyzer",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getActivityData", "getBodyComposition", "getSleepData"]
+  },
+  {
+    "id": "female-hormone-balance",
+    "name": "Female Hormone Balance",
+    "category": "optimization",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "morning-briefing",
+    "name": "Morning Health Briefing",
+    "category": "lifestyle",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getVitals", "getActivityData"]
+  },
+  {
+    "id": "supplement-advisor",
+    "name": "Supplement Stack Advisor",
+    "category": "lifestyle",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getVitals", "getSleepData"]
+  },
+  {
+    "id": "body-recomp",
+    "name": "Body Recomposition Coach",
+    "category": "lifestyle",
+    "difficulty": "intermediate",
+    "mcpTools": ["getBodyComposition", "getActivityData", "searchBiomarkers", "getSleepData"]
+  },
+  {
+    "id": "garmin-performance",
+    "name": "Garmin Performance Analyst",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["getActivityData", "getVitals", "getSleepData", "getBodyComposition"]
+  },
+  {
+    "id": "stress-resilience",
+    "name": "Stress & Resilience Monitor",
+    "category": "analysis",
+    "difficulty": "beginner",
+    "mcpTools": ["getVitals", "getSleepData", "getActivityData"]
+  },
+  {
+    "id": "endurance-optimizer",
+    "name": "Endurance Optimizer",
+    "category": "optimization",
+    "difficulty": "intermediate",
+    "mcpTools": ["getActivityData", "getVitals", "getSleepData", "getBodyComposition"]
+  },
+  {
+    "id": "longevity-protocol",
+    "name": "Longevity Protocol Builder",
+    "category": "optimization",
+    "difficulty": "advanced",
+    "mcpTools": ["getBiologicalAge", "searchBiomarkers", "getActivityData", "getSleepData", "getVitals", "getBodyComposition"]
+  },
+  {
+    "id": "thyroid-deep-dive",
+    "name": "Thyroid Deep Dive",
+    "category": "clinical",
+    "difficulty": "advanced",
+    "mcpTools": ["searchBiomarkers", "getVitals", "getSleepData", "getBodyComposition"]
+  },
+  {
+    "id": "inflammation-tracker",
+    "name": "Inflammation Tracker",
+    "category": "clinical",
+    "difficulty": "intermediate",
+    "mcpTools": ["searchBiomarkers", "getSleepData", "getVitals", "getActivityData", "getBodyComposition"]
+  },
+  {
+    "id": "weekly-health-report",
+    "name": "Weekly Health Report",
+    "category": "lifestyle",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getVitals", "getActivityData", "getBodyComposition", "searchBiomarkers"]
+  },
+  {
+    "id": "travel-health",
+    "name": "Travel Health Advisor",
+    "category": "lifestyle",
+    "difficulty": "beginner",
+    "mcpTools": ["getSleepData", "getSleepStages", "getVitals", "getActivityData"]
+  }
+]
