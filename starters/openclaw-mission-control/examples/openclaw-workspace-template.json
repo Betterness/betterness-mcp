@@ -1,0 +1,21 @@
+{
+  "workspace": "betterness-health-mission-control",
+  "description": "Template shape for an OpenClaw workspace backed by Betterness MCP.",
+  "files": [
+    "AGENTS.md",
+    "MCP.md",
+    "MEMORY.md",
+    "SOUL.md",
+    "prompts/morning-review.md",
+    "prompts/lab-gap-review.md",
+    "prompts/weekly-operator-review.md",
+    "components/daily-brief-panel.json",
+    "components/lab-ops-panel.json",
+    "components/clinic-squad-board.json"
+  ],
+  "smokeTests": [
+    "listConnectedDevices",
+    "getUserLabData",
+    "searchBiomarkers"
+  ]
+}

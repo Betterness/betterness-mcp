@@ -1,0 +1,22 @@
+{
+  "id": "betterness-lab-ops",
+  "name": "Betterness Lab Ops",
+  "description": "Operational panel for coverage gaps, orders, and scheduling.",
+  "cards": [
+    {
+      "title": "Coverage gaps",
+      "source": "getUserLabData + searchBiomarkers",
+      "prompt": "Identify missing or stale biomarker coverage and rank the next best panel to order."
+    },
+    {
+      "title": "Order state",
+      "source": "getLabOrderStatus",
+      "prompt": "Summarize open lab orders with current status, blockers, and next user action."
+    },
+    {
+      "title": "Scheduling readiness",
+      "source": "initializeLabOrder + searchLabServiceCenters + getServiceCenterSlots",
+      "prompt": "Check whether the user is ready to schedule and surface the next operational step."
+    }
+  ]
+}

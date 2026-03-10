@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Persona Overlay",
+  "description": "An optional reasoning layer applied on top of a skill. Changes voice, decision style, evidence style, and risk posture without modifying the underlying skill definition. Overlays are composable with any compatible skill.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable overlay name shown in the UI.",
+      "examples": ["Attia: Longevity Precision", "Galpin: Performance Science", "Huberman: Protocols"]
+    },
+    "description": {
+      "type": "string",
+      "description": "One or two sentences describing what this overlay adds to a skill interaction."
+    },
+    "overlay_type": {
+      "type": "string",
+      "enum": ["expert-inspired", "role-based", "domain-specific"],
+      "description": "Classification of overlay origin. expert-inspired draws from a named practitioner's public framework. role-based adapts to user role (e.g. coach, parent). domain-specific narrows reasoning to a health domain."
+    },
+    "inspired_by": {
+      "type": "string",
+      "description": "For expert-inspired overlays: the practitioner, researcher, or public framework this overlay draws from. Not an endorsement — models publicly available methodology only.",
+      "examples": ["Peter Attia MD — public longevity framework", "Andy Galpin PhD — performance science methodology", "Andrew Huberman PhD — protocol-based neuroscience communication"]
+    },
+    "voice_style": {
+      "type": "string",
+      "description": "How the overlay changes BETT-i's output tone and language. One concise sentence.",
+      "examples": ["Precise, mechanistic, calm. Favors specificity over reassurance.", "Direct, energizing, data-grounded. Uses training-block framing.", "Protocol-structured. Names timing windows explicitly. References foundational biology."]
+    },
+    "decision_style": {
+      "type": "string",
+      "description": "How the overlay approaches recommendations and trade-offs.",
+      "examples": ["Risk-stratified. Asks what could go wrong before what might go right.", "Periodization-aware. Recommendations adapt to training phase.", "First-principles. Explains mechanism before giving the recommendation."]
+    },
+    "evidence_style": {
+      "type": "string",
+      "description": "How the overlay cites and weighs evidence.",
+      "examples": ["RCT and mechanistic data preferred. Acknowledges N=1 limits.", "Sport science literature. Notes effect sizes and population specificity.", "Cites studies but translates to practical protocol steps."]
+    },
+    "risk_posture": {
+      "type": "string",
+      "description": "How the overlay handles edge cases, contraindications, and uncertainty.",
+      "examples": ["Conservative. Flags unknowns explicitly. Recommends physician review for anything clinical.", "Moderate. Distinguishes between training risk and medical risk.", "Transparent. States confidence level and recommends professional oversight for clinical decisions."]
+    },
+    "compatible_skills": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Skill IDs this overlay is compatible with. Empty array means compatible with all skills in compatible_domains.",
+      "examples": [["hrv-trend-analyzer", "vo2max-estimator", "zone2-training-guide"], ["sleep-staging-interpreter", "glucose-fueling-guide"]]
+    },
+    "compatible_specialists": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "BETT-i Specialist IDs this overlay works alongside. Used when a coach specialist and persona overlay are both active.",
+      "examples": [["specialist-longevity-md", "specialist-functional-medicine"], ["specialist-strength-coach", "specialist-sports-dietitian"]]
+    },
+    "compatible_domains": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Health domains where this overlay applies. The overlay is only surfaced for skills in these domains.",
+      "examples": [["longevity", "biomarkers", "cardiovascular"], ["performance", "recovery", "sleep"], ["nutrition", "metabolic", "glucose"]]
+    },
+    "preferred_actions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Actions this overlay prefers to route into when multiple are available. Used to bias the action selection in the skill's actions_enabled list.",
+      "examples": [["order-lab-panel", "schedule-physician-review"], ["log-training-session", "adjust-training-block"], ["set-protocol-reminder", "build-weekly-schedule"]]
+    },
+    "knowledge_sources": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Public knowledge sources, books, podcasts, or research corpora this overlay draws from. Used to populate evidence bundles and system prompt context.",
+      "examples": [["Outlive (Attia, 2023)", "Peter Attia Podcast — public episodes", "Attia Drive clinical framework"], ["Exercise is Medicine literature", "NSCA guidelines", "Galpin Lab published research"]]
+    }
+  },
+  "required": ["name", "description", "overlay_type", "voice_style", "decision_style", "compatible_skills", "compatible_domains"],
+  "additionalProperties": false
+}

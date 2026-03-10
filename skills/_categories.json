@@ -1,0 +1,82 @@
+[
+  {
+    "id": "daily-health",
+    "name": "Daily Health",
+    "description": "Broadest entry point. Useful to any user on day one."
+  },
+  {
+    "id": "sleep-recovery",
+    "name": "Sleep & Recovery",
+    "description": "Highest wearable relevance. Strongest mass-market category."
+  },
+  {
+    "id": "fitness-performance",
+    "name": "Fitness & Performance",
+    "description": "Athletes, runners, cyclists, lifters, HIIT, HYROX, yoga."
+  },
+  {
+    "id": "biomarkers-labs",
+    "name": "Biomarkers & Labs",
+    "description": "One of the deepest Betterness moats. Routes insight into ordering, uploads, scheduling."
+  },
+  {
+    "id": "metabolic-cgm",
+    "name": "Metabolic Health & CGM",
+    "description": "Broad demand, high actionability. Connects food, exercise, sleep, labs, glucose."
+  },
+  {
+    "id": "longevity",
+    "name": "Longevity",
+    "description": "Flagship imagination category. Expert-inspired overlays and long-horizon protocols."
+  },
+  {
+    "id": "nutrition-food",
+    "name": "Nutrition & Food",
+    "description": "Expands beyond measurement into meals, grocery, fueling, restaurants."
+  },
+  {
+    "id": "products-shopping",
+    "name": "Products & Shopping",
+    "description": "Turns recommendations into user value. Supplements, comparisons, health spending."
+  },
+  {
+    "id": "social-events-community",
+    "name": "Social, Events & Community",
+    "description": "Makes wellness social, local, and discoverable."
+  },
+  {
+    "id": "gyms-studios-coaching",
+    "name": "Gyms, Studios & Coaching",
+    "description": "Ties to Barry's, Equinox, Life Time, HYROX, yoga, coaching ecosystems."
+  },
+  {
+    "id": "womens-health",
+    "name": "Women's Health",
+    "description": "First-class category. Cycle-aware, hormonal, fertility, pregnancy, menopause."
+  },
+  {
+    "id": "travel-circadian",
+    "name": "Travel & Circadian",
+    "description": "Broad-use with immediate value. Sleep, recovery, schedule, light, food."
+  },
+  {
+    "id": "family-household",
+    "name": "Family & Household",
+    "description": "Extends from solo optimization to shared lifestyle operating system."
+  },
+  {
+    "id": "actions-automation",
+    "name": "Actions & Automation",
+    "description": "Prevents the library from being passive. Reminders, scheduling, workflows."
+  },
+  {
+    "id": "mission-control",
+    "name": "Mission Control",
+    "description": "Advanced operator layer. Best installable health mission-control surface."
+  },
+  {
+    "id": "device-guides",
+    "name": "Device Guides",
+    "description": "Device-first entry for Whoop, Oura, Garmin, Apple, CGM, Eight Sleep users."
+  }
+]

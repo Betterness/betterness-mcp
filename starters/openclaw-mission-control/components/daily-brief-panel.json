@@ -1,0 +1,22 @@
+{
+  "id": "betterness-daily-brief",
+  "name": "Betterness Daily Brief",
+  "description": "Morning mission-control panel for wearables, readiness, and next action.",
+  "cards": [
+    {
+      "title": "Recovery snapshot",
+      "source": "getSleepData + getVitals + getActivityData",
+      "prompt": "Summarize overnight recovery, sleep quality, and current readiness in under 120 words."
+    },
+    {
+      "title": "Device coverage",
+      "source": "listConnectedDevices",
+      "prompt": "Show which device connections are active and flag missing or stale integrations."
+    },
+    {
+      "title": "Today's action",
+      "source": "mission-control synthesis",
+      "prompt": "Recommend one clear health action for today based on recovery, recent biomarkers, and open workflows."
+    }
+  ]
+}

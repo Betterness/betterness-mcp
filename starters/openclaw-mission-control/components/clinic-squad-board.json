@@ -1,0 +1,27 @@
+{
+  "id": "betterness-clinic-squad",
+  "name": "Betterness Clinic Squad Board",
+  "description": "Private-clinic style operator board for a health mission control.",
+  "operators": [
+    {
+      "role": "clinic-chief-of-staff",
+      "job": "Coordinate the entire system and decide what matters this week."
+    },
+    {
+      "role": "biomarker-analyst",
+      "job": "Interpret recent labs, rank risk, and explain what changed."
+    },
+    {
+      "role": "lab-coordinator",
+      "job": "Recommend panels, track order state, and move scheduling forward."
+    },
+    {
+      "role": "nutrition-environment-operator",
+      "job": "Turn meals, restaurants, supplements, and routines into daily action."
+    },
+    {
+      "role": "marathon-performance-coach",
+      "job": "Optional overlay for training blocks, race prep, and recovery choices."
+    }
+  ]
+}

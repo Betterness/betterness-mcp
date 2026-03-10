@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillGraph Metadata",
+  "description": "Graph metadata block embedded in every skill definition. Drives composition, adaptation, routing, and connection upsells at runtime.",
+  "type": "object",
+  "properties": {
+    "domains": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Broad health domains like sleep, recovery, nutrition, longevity",
+      "examples": [["sleep", "recovery"], ["nutrition", "metabolic"], ["longevity", "biomarkers"]]
+    },
+    "device_affinities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Devices that improve this skill. Used to render richer output when connected, and to surface connection upsells when absent.",
+      "examples": [["whoop", "oura"], ["garmin", "apple-watch"], ["cgm-dexcom", "cgm-libre"]]
+    },
+    "activity_affinities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Activities like cycling, running, strength training. Skill activates or deepens when user logs or connects these activities.",
+      "examples": [["cycling", "running"], ["strength", "hiit"], ["yoga", "mobility"]]
+    },
+    "biomarker_affinities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Biomarkers especially relevant to this skill. Skill interprets these values if available in the user's lab history.",
+      "examples": [["hba1c", "fasting-glucose"], ["testosterone", "cortisol"], ["apob", "ldl-p", "hscrp"]]
+    },
+    "goals": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Outcomes this skill addresses. Used to match skills to user goal profiles.",
+      "examples": [["fat-loss", "metabolic-health"], ["performance", "vo2max"], ["longevity", "healthspan"]]
+    },
+    "actions_enabled": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "What the skill can route into via MCP tools. Every skill must have at least one action.",
+      "examples": [["schedule-rest-day", "send-recovery-brief"], ["order-lab-panel", "upload-results"], ["recommend-product", "find-local-venue"]]
+    },
+    "connection_upsell": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Data sources that, if connected, would meaningfully improve this skill's output. Surfaced as contextual prompts when missing.",
+      "examples": [["whoop", "eight-sleep"], ["cgm-dexcom", "myfitnesspal"], ["apple-health", "garmin"]]
+    },
+    "complements": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Other skill IDs frequently paired with this one. Drives the combination engine.",
+      "examples": [["cycling-hr-zone-optimizer", "glucose-fueling-guide"], ["sleep-staging-interpreter", "hrv-trend-analyzer"]]
+    },
+    "persona_compatible": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Persona overlay IDs that fit this skill's domain and evidence style.",
+      "examples": [["attia-longevity", "galpin-performance"], ["huberman-protocols"], ["gentle-wellness"]]
+    },
+    "evidence_bundles": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Reusable evidence pack IDs the skill can cite. Bundles live separately and are shared across skills.",
+      "examples": [["hrv-science-v1", "sleep-staging-basics"], ["zone2-cardio-evidence"], ["apob-cardiovascular-risk"]]
+    },
+    "listings_hooks": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "How this skill connects into product listings, venues, or services. Drives the Products & Shopping and Gyms categories.",
+      "examples": [["supplement-magnesium", "supplement-omega3"], ["gym-hyrox-partner", "studio-cycling"], ["cgm-device-comparison"]]
+    },
+    "venue_affinities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Venue and brand contexts this skill is relevant in (e.g. Barry's, Equinox, Life Time, HYROX).",
+      "examples": [["barrys", "equinox"], ["lifetime-fitness", "hyrox"], ["whoop-locker-room"]]
+    },
+    "icp_affinities": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "ICP labels from the contact/coach layer. Used when a Betterness One coach is serving a specific client segment.",
+      "examples": [["high-performer-exec", "competitive-athlete"], ["new-parent", "perimenopausal-woman"], ["biohacker"]]
+    },
+    "user_segments": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "User identity labels. Used for cold-start recommendation before full goal profile is built.",
+      "examples": [["competitive-cyclist", "masters-athlete"], ["new-to-wearables", "quantified-self"], ["postpartum", "ttc"]]
+    }
+  },
+  "required": ["domains", "device_affinities", "goals", "actions_enabled", "complements"],
+  "additionalProperties": false
+}
