@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Identity
+# Biohacker Lab — Identity
 
 ## Tagline
 
@@ -6,7 +6,7 @@
 
 ## What This Workspace Is
 
-The Biohacker Lab Operator is a BetterClaw OS workspace for people who treat their health like a serious, data-driven project.
+The Biohacker Lab is a BetterClaw OS workspace for people who treat their health like a serious, data-driven project.
 
 It connects lab panels, supplement protocols, wearable data, and biological age tracking into a single biomarker intelligence layer — powered by Betterness Graph and delivered through Betterness MCP.
 

@@ -1,4 +1,4 @@
-# Road Cycling Operator — Planning Mode
+# Road Cycling — Planning Mode
 
 ## When Planning Mode Activates
 

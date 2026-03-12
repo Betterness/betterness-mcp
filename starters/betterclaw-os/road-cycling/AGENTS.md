@@ -1,4 +1,4 @@
-# Road Cycling Operator — Agents
+# Road Cycling — Agents
 
 ## Primary Agent: Cycling Coach
 

@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Heartbeat
+# Biohacker Lab — Heartbeat
 
 ## Overview
 

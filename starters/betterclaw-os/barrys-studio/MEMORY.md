@@ -1,8 +1,8 @@
-# Barry's / Studio Operator — Memory
+# Barry's — Memory
 
 ## Memory Strategy
 
-Studio Operator uses a two-layer memory model: local workspace memory for session continuity and class-day state, and Betterness Graph for longitudinal studio habit intelligence.
+Barry's uses a two-layer memory model: local workspace memory for session continuity and class-day state, and Betterness Graph for longitudinal studio habit intelligence.
 
 ---
 

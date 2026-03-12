@@ -1,8 +1,8 @@
-# Recovery Operator — Heartbeat
+# Recovery — Heartbeat
 
 ## Overview
 
-The heartbeat is the Recovery Operator's proactive intelligence loop. It runs on schedule without the user asking, delivering recovery insights at the moments they matter most.
+The heartbeat is the Recovery's proactive intelligence loop. It runs on schedule without the user asking, delivering recovery insights at the moments they matter most.
 
 Recovery is time-sensitive. A morning verdict is useless at noon. A bedtime recommendation is useless at 6 AM. The heartbeat ensures the right information arrives at the right time.
 

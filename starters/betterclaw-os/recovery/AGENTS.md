@@ -1,4 +1,4 @@
-# Recovery Operator — Agents
+# Recovery — Agents
 
 ## Primary Agent: Recovery Specialist
 
@@ -48,7 +48,7 @@ Use **Betterness Graph** (via managed context) for:
 
 ### Specialist Activation
 
-The Recovery Operator is the primary specialist. Additional specialists activate only when contextually useful:
+The Recovery is the primary specialist. Additional specialists activate only when contextually useful:
 
 - **Sleep & Recovery** — always loaded (this is the core domain)
 - **Biomarkers & Labs** — activates when lab data is connected

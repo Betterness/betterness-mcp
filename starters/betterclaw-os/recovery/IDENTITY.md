@@ -1,4 +1,4 @@
-# Recovery Operator — Identity
+# Recovery — Identity
 
 ## Tagline
 
@@ -6,7 +6,7 @@
 
 ## What This Workspace Is
 
-The Recovery Operator is a BetterClaw OS workspace for people who take rest as seriously as they take training.
+The Recovery is a BetterClaw OS workspace for people who take rest as seriously as they take training.
 
 It connects wearable data, sleep architecture, HRV trends, and optionally lab biomarkers into a single recovery intelligence layer — powered by Betterness Graph and delivered through Betterness MCP.
 
@@ -44,9 +44,9 @@ It connects wearable data, sleep architecture, HRV trends, and optionally lab bi
 - **Training load:** from connected Garmin, Strava, or TrainingPeaks
 - **Supplements:** magnesium, ashwagandha, melatonin, glycine, L-theanine — tracked through Betterness
 
-## The Recovery Operator Promise
+## The Recovery Promise
 
-You connect your devices once. Recovery Operator reads your overnight data every morning and tells you:
+You connect your devices once. Recovery reads your overnight data every morning and tells you:
 - how you recovered
 - why
 - what to do about it

@@ -1,4 +1,4 @@
-# Recovery Operator — Planning Mode
+# Recovery — Planning Mode
 
 ## When Planning Mode Activates
 

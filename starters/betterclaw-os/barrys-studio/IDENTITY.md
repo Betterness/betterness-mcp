@@ -1,4 +1,4 @@
-# Barry's / Studio Operator — Identity
+# Barry's — Identity
 
 ## Tagline
 
@@ -6,7 +6,7 @@
 
 ## What This Workspace Is
 
-The Studio Operator is a BetterClaw OS workspace that wraps around your boutique fitness experience — making everything before and after class smarter.
+The Barry's is a BetterClaw OS workspace that wraps around your boutique fitness experience — making everything before and after class smarter.
 
 It connects wearable recovery data, class schedules, nutrition options, and body composition into a single intelligence layer around your studio habit — powered by Betterness Graph and delivered through Betterness MCP.
 
@@ -20,7 +20,7 @@ It connects wearable recovery data, class schedules, nutrition options, and body
 
 ## What Makes This Different From a Fitness App
 
-1. **It wraps around the studio, not replaces it.** Your class is the experience. Studio Operator makes the 23 hours around it smarter.
+1. **It wraps around the studio, not replaces it.** Your class is the experience. Barry's makes the 23 hours around it smarter.
 2. **It gives you a call before class.** Not a dashboard of metrics — a clear recommendation: go hard, dial back, or skip today.
 3. **It knows your cadence.** Betterness Graph tracks your attendance patterns, recovery response curves, and weekly rhythm to find your personal sweet spot.
 4. **It feeds you after class.** Healthy options near your studio via maps — ready when you walk out the door, not when you get home hungry and order pizza.
@@ -36,15 +36,15 @@ It connects wearable recovery data, class schedules, nutrition options, and body
 | Garmin | Body Battery, training load, stress monitoring |
 | Withings | Body composition trends, weight tracking |
 
-## Optional Data That Deepens Studio Operator
+## Optional Data That Deepens Barry's
 
 - **Lab biomarkers:** cortisol, CRP, ferritin — are you overtrained or undertrained?
 - **Body composition:** lean mass trends, body fat % — is your studio habit changing your body?
 - **Biological age:** PhenoAge trend — is consistent studio training actually making you younger?
 - **Class schedule integration:** calendar data for upcoming classes and scheduling conflicts
 
-## The Studio Operator Promise
+## The Barry's Promise
 
-You connect your devices once. Studio Operator checks your recovery every morning you have class, tells you how hard to go, feeds you a recovery plan when you walk out, and keeps your weekly cadence dialed in.
+You connect your devices once. Barry's checks your recovery every morning you have class, tells you how hard to go, feeds you a recovery plan when you walk out, and keeps your weekly cadence dialed in.
 
 No dashboards. No data dumps. One coach-at-the-desk experience. Every class day.

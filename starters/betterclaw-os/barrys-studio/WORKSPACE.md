@@ -1,8 +1,8 @@
-# Barry's / Studio Operator — Workspace
+# Barry's — Workspace
 
 ## Home View
 
-The Studio Operator workspace opens to a single "today" view. Not a dashboard. Not tabs. One cohesive surface that answers the class-day question: **Am I ready, how hard should I go, and what do I do after?**
+The Barry's workspace opens to a single "today" view. Not a dashboard. Not tabs. One cohesive surface that answers the class-day question: **Am I ready, how hard should I go, and what do I do after?**
 
 ### The Class-Day Card
 
@@ -92,7 +92,7 @@ After the readiness card, the workspace shows contextual modules based on timing
 
 ## Interaction Model
 
-The user interacts with Studio Operator primarily through natural conversation, timed around the class experience.
+The user interacts with Barry's primarily through natural conversation, timed around the class experience.
 
 ### Common interactions
 
@@ -116,7 +116,7 @@ The user interacts with Studio Operator primarily through natural conversation, 
 
 ## OpenClaw-Native Integration
 
-Studio Operator uses OpenClaw workspace primitives:
+Barry's uses OpenClaw workspace primitives:
 
 - **Workspace files** — AGENTS.md, SOUL.md, etc. define behavior
 - **Skills** — class-readiness and post-class-plan as workspace skills

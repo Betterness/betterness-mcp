@@ -1,8 +1,8 @@
-# Road Cycling Operator — Heartbeat
+# Road Cycling — Heartbeat
 
 ## Overview
 
-The heartbeat is the Road Cycling Operator's proactive intelligence loop. It runs on schedule without the rider asking, delivering ride intelligence at the moments that matter most.
+The heartbeat is the Road Cycling's proactive intelligence loop. It runs on schedule without the rider asking, delivering ride intelligence at the moments that matter most.
 
 A ride briefing is useless after the rider has already kitted up. A fueling plan is useless mid-ride. The heartbeat ensures the right information arrives before the rider clips in.
 

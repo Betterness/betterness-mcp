@@ -8,7 +8,7 @@ Powered by [Betterness Graph](https://betterness.ai) and [Betterness MCP](https:
 
 ## What It Does
 
-Recovery Operator turns your wearable data into daily recovery intelligence:
+Recovery turns your wearable data into daily recovery intelligence:
 
 - **Morning verdict** — green / amber / red with one action
 - **Training gate** — should you push, moderate, or rest today?
@@ -59,7 +59,7 @@ Link at least one wearable through your Betterness account:
 
 Open your workspace and ask: **"How did I sleep?"**
 
-Recovery Operator handles the rest.
+Recovery handles the rest.
 
 ---
 
@@ -102,7 +102,7 @@ recovery/
 
 ## Optional: Lab Biomarkers
 
-When lab data is connected through Betterness, Recovery Operator layers biomarker context into recovery reasoning:
+When lab data is connected through Betterness, Recovery layers biomarker context into recovery reasoning:
 - Cortisol, DHEA-S (stress axis)
 - Testosterone, free T (anabolic recovery)
 - TSH, fT3, fT4 (thyroid / energy)
@@ -123,13 +123,13 @@ When lab data is connected through Betterness, Recovery Operator layers biomarke
 
 ## Part of BetterClaw OS
 
-Recovery Operator is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
+Recovery is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
 
 Other BetterClaw OS packages:
-- Marathon Operator
-- Road Cycling Operator
-- HYROX Operator
-- Biohacker Lab Operator
+- Marathon
+- Road Cycling
+- HYROX
+- Biohacker Lab
 - And more at [github.com/Betterness/betterness-mcp](https://github.com/Betterness/betterness-mcp)
 
 ---

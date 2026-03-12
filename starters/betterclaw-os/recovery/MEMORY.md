@@ -1,8 +1,8 @@
-# Recovery Operator — Memory
+# Recovery — Memory
 
 ## Memory Strategy
 
-Recovery Operator uses a two-layer memory model: local workspace memory for session continuity, and Betterness Graph for longitudinal recovery intelligence.
+Recovery uses a two-layer memory model: local workspace memory for session continuity, and Betterness Graph for longitudinal recovery intelligence.
 
 ---
 

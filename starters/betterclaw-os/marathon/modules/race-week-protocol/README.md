@@ -4,7 +4,7 @@ Delivers a 7-day countdown to race day with daily guidance on training, fueling,
 
 ## When Active
 
-Shown during the 7 days before the target race date. Activates automatically when the calendar reaches race week. The most structured module in the Marathon Operator — every day has specific actions.
+Shown during the 7 days before the target race date. Activates automatically when the calendar reaches race week. The most structured module in the Marathon — every day has specific actions.
 
 ## Data Sources
 

@@ -1,8 +1,8 @@
-# Road Cycling Operator — Workspace
+# Road Cycling — Workspace
 
 ## Home View
 
-The Road Cycling Operator workspace opens to a single "today" view anchored by ride readiness and power. Not a dashboard. Not a training log. One cohesive surface that answers the daily question: **What ride should I do today, at what watts, and is my body ready for it?**
+The Road Cycling workspace opens to a single "today" view anchored by ride readiness and power. Not a dashboard. Not a training log. One cohesive surface that answers the daily question: **What ride should I do today, at what watts, and is my body ready for it?**
 
 ### The Ride Readiness Card
 
@@ -79,7 +79,7 @@ After the readiness card, the workspace shows contextual modules based on what i
 
 ## Interaction Model
 
-The rider interacts with Road Cycling Operator primarily through natural conversation, not through clicking dashboard widgets.
+The rider interacts with Road Cycling primarily through natural conversation, not through clicking dashboard widgets.
 
 ### Common interactions
 

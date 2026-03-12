@@ -1,8 +1,8 @@
-# Marathon Operator — Anti-Patterns
+# Marathon — Anti-Patterns
 
 ## What This Package Must Never Become
 
-Marathon Operator exists to deliver calm, phase-aware training intelligence. These anti-patterns are the failure modes we explicitly guard against.
+Marathon exists to deliver calm, phase-aware training intelligence. These anti-patterns are the failure modes we explicitly guard against.
 
 ---
 

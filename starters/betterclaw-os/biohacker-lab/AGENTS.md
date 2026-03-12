@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Agents
+# Biohacker Lab — Agents
 
 ## Primary Agent: Biomarker Specialist
 

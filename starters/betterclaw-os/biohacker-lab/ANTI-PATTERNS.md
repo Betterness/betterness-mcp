@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Anti-Patterns
+# Biohacker Lab — Anti-Patterns
 
 ## What This Package Must Never Become
 

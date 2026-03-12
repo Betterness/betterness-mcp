@@ -1,4 +1,4 @@
-# Road Cycling Operator — Identity
+# Road Cycling — Identity
 
 ## Tagline
 
@@ -6,7 +6,7 @@
 
 ## What This Workspace Is
 
-The Road Cycling Operator is a BetterClaw OS workspace for riders who train with power and want every ride decision — route, intensity, fueling, recovery — informed by their actual data.
+The Road Cycling is a BetterClaw OS workspace for riders who train with power and want every ride decision — route, intensity, fueling, recovery — informed by their actual data.
 
 It connects wearable signals, power data, route context, weather, and optionally lab biomarkers into a single cycling intelligence layer — powered by Betterness Graph and delivered through Betterness MCP.
 
@@ -46,9 +46,9 @@ It connects wearable signals, power data, route context, weather, and optionally
 - **Route history:** accumulated routes from Garmin for pattern detection
 - **Equipment log:** bike, wheels, chain, tires, cassette — tracked by distance
 
-## The Road Cycling Operator Promise
+## The Road Cycling Promise
 
-You connect your devices once. Road Cycling Operator reads your power, recovery, and route context every day and tells you:
+You connect your devices once. Road Cycling reads your power, recovery, and route context every day and tells you:
 - what ride to do today
 - at what watts
 - on what route

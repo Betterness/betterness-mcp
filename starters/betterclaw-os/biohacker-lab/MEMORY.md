@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Memory
+# Biohacker Lab — Memory
 
 ## Memory Strategy
 

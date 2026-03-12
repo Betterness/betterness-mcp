@@ -1,8 +1,8 @@
-# Marathon Operator — Workspace
+# Marathon — Workspace
 
 ## Home View
 
-The Marathon Operator workspace opens to a single "today" view anchored by the training phase. Not a dashboard. Not a run log. One cohesive surface that answers the daily question: **Where am I in my training, and what should I do today?**
+The Marathon workspace opens to a single "today" view anchored by the training phase. Not a dashboard. Not a run log. One cohesive surface that answers the daily question: **Where am I in my training, and what should I do today?**
 
 ### The Training Phase Card
 
@@ -80,7 +80,7 @@ After the training phase card, the workspace shows contextual modules based on w
 
 ## Interaction Model
 
-The user interacts with Marathon Operator primarily through natural conversation, not through clicking dashboard widgets.
+The user interacts with Marathon primarily through natural conversation, not through clicking dashboard widgets.
 
 ### Common interactions
 
@@ -106,7 +106,7 @@ The user interacts with Marathon Operator primarily through natural conversation
 
 ## OpenClaw-Native Integration
 
-Marathon Operator uses OpenClaw workspace primitives:
+Marathon uses OpenClaw workspace primitives:
 
 - **Workspace files** — AGENTS.md, SOUL.md, etc. define behavior
 - **Skills** — training-status and race-prep as workspace skills

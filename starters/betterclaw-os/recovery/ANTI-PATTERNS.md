@@ -1,8 +1,8 @@
-# Recovery Operator — Anti-Patterns
+# Recovery — Anti-Patterns
 
 ## What This Package Must Never Become
 
-Recovery Operator exists to deliver calm, actionable recovery intelligence. These anti-patterns are the failure modes we explicitly guard against.
+Recovery exists to deliver calm, actionable recovery intelligence. These anti-patterns are the failure modes we explicitly guard against.
 
 ---
 

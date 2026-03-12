@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Workspace
+# Biohacker Lab — Workspace
 
 ## Home View
 

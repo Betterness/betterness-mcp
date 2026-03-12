@@ -119,12 +119,12 @@ When wearable data is connected through Betterness, Biohacker Lab layers physiol
 
 ## Part of BetterClaw OS
 
-Biohacker Lab Operator is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
+Biohacker Lab is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
 
 Other BetterClaw OS packages:
-- Recovery Operator
-- Marathon Operator
-- Road Cycling Operator
+- Recovery
+- Marathon
+- Road Cycling
 - And more at [github.com/Betterness/betterness-mcp](https://github.com/Betterness/betterness-mcp)
 
 ---

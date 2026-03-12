@@ -1,8 +1,8 @@
-# Barry's / Studio Operator — Heartbeat
+# Barry's — Heartbeat
 
 ## Overview
 
-The heartbeat is Studio Operator's proactive intelligence loop. It runs on schedule without the user asking, delivering class-day intelligence at the moments that matter — before you walk in and after you walk out.
+The heartbeat is Barry's's proactive intelligence loop. It runs on schedule without the user asking, delivering class-day intelligence at the moments that matter — before you walk in and after you walk out.
 
 Studio training is time-sensitive. A readiness check at noon is useless for a 6:30 AM class. A recovery plan tomorrow morning is too late when you're hungry at 7:30 AM. The heartbeat ensures the right information arrives at the right time.
 

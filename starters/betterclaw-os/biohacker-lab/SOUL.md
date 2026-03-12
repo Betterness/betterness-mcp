@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Soul
+# Biohacker Lab — Soul
 
 ## Voice
 

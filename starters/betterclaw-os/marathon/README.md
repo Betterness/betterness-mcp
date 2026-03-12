@@ -8,7 +8,7 @@ Powered by [Betterness Graph](https://betterness.ai) and [Betterness MCP](https:
 
 ## What It Does
 
-Marathon Operator turns your wearable data and training history into periodized marathon intelligence:
+Marathon turns your wearable data and training history into periodized marathon intelligence:
 
 - **Training phase awareness** — knows whether you are in base, build, peak, taper, or race week and adjusts everything accordingly
 - **Long run planning** — distance, pace, fueling plan, and route for your next long run
@@ -59,7 +59,7 @@ Link at least one wearable through your Betterness account:
 
 Open your workspace and ask: **"What's my training look like this week?"**
 
-Marathon Operator handles the rest.
+Marathon handles the rest.
 
 ---
 
@@ -104,7 +104,7 @@ marathon/
 
 ## Optional: Race and Route Data
 
-When additional data is connected through Betterness, Marathon Operator deepens its intelligence:
+When additional data is connected through Betterness, Marathon deepens its intelligence:
 - **Strava / TrainingPeaks** — historical run data, pace trends, elevation profiles
 - **Lab biomarkers** — ferritin (iron stores), vitamin D, testosterone, cortisol, CRP (inflammation)
 - **Weather APIs** — race-day temperature, humidity, and wind for fueling adjustments
@@ -125,13 +125,13 @@ When additional data is connected through Betterness, Marathon Operator deepens 
 
 ## Part of BetterClaw OS
 
-Marathon Operator is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
+Marathon is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
 
 Other BetterClaw OS packages:
-- Recovery Operator
-- Road Cycling Operator
-- HYROX Operator
-- Biohacker Lab Operator
+- Recovery
+- Road Cycling
+- HYROX
+- Biohacker Lab
 - And more at [github.com/Betterness/betterness-mcp](https://github.com/Betterness/betterness-mcp)
 
 ---

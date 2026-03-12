@@ -10,7 +10,7 @@ Powered by [Betterness Graph](https://betterness.ai) and [Betterness MCP](https:
 
 ## What It Does
 
-Road Cycling Operator turns your power data, recovery signals, and route context into daily ride intelligence:
+Road Cycling turns your power data, recovery signals, and route context into daily ride intelligence:
 
 - **Ride readiness** — green / amber / red with today's session, watts, and route
 - **Power tracking** — FTP trend, zone distribution, W/kg progression
@@ -63,13 +63,13 @@ Tell the workspace your current FTP:
 
 > "My FTP is 271 watts, tested last week."
 
-Road Cycling Operator will compute your zones and start building context.
+Road Cycling will compute your zones and start building context.
 
 ### 5. Ride
 
 Ask: **"What's my ride today?"**
 
-Road Cycling Operator handles the rest.
+Road Cycling handles the rest.
 
 ---
 
@@ -115,7 +115,7 @@ road-cycling/
 
 ## Optional: Lab Biomarkers
 
-When lab data is connected through Betterness, Road Cycling Operator layers biomarker context into training intelligence:
+When lab data is connected through Betterness, Road Cycling layers biomarker context into training intelligence:
 - Ferritin, iron panel (endurance athletes are chronically iron-depleted)
 - Cortisol (overtraining and recovery stress)
 - Testosterone, free T (anabolic recovery)
@@ -137,13 +137,13 @@ When lab data is connected through Betterness, Road Cycling Operator layers biom
 
 ## Part of BetterClaw OS
 
-Road Cycling Operator is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
+Road Cycling is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
 
 Other BetterClaw OS packages:
-- Recovery Operator
-- Marathon Operator
-- HYROX Operator
-- Biohacker Lab Operator
+- Recovery
+- Marathon
+- HYROX
+- Biohacker Lab
 - And more at [github.com/Betterness/betterness-mcp](https://github.com/Betterness/betterness-mcp)
 
 ---

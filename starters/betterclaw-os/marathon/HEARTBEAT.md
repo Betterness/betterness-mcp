@@ -1,8 +1,8 @@
-# Marathon Operator — Heartbeat
+# Marathon — Heartbeat
 
 ## Overview
 
-The heartbeat is the Marathon Operator's proactive intelligence loop. It runs on schedule without the runner asking, delivering training intelligence at the moments it matters most.
+The heartbeat is the Marathon's proactive intelligence loop. It runs on schedule without the runner asking, delivering training intelligence at the moments it matters most.
 
 Marathon training is time-sensitive. A training verdict is useless after the runner has already laced up. A fueling reminder is useless after they have already bonked. The heartbeat ensures the right information arrives before the decision point.
 

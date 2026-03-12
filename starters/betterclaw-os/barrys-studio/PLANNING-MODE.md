@@ -1,4 +1,4 @@
-# Barry's / Studio Operator — Planning Mode
+# Barry's — Planning Mode
 
 ## When Planning Mode Activates
 

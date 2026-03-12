@@ -1,8 +1,8 @@
-# Marathon Operator — Memory
+# Marathon — Memory
 
 ## Memory Strategy
 
-Marathon Operator uses a two-layer memory model: local workspace memory for training continuity and session context, and Betterness Graph for longitudinal training intelligence and periodization patterns.
+Marathon uses a two-layer memory model: local workspace memory for training continuity and session context, and Betterness Graph for longitudinal training intelligence and periodization patterns.
 
 ---
 

@@ -1,8 +1,8 @@
-# Road Cycling Operator — Anti-Patterns
+# Road Cycling — Anti-Patterns
 
 ## What This Package Must Never Become
 
-Road Cycling Operator exists to deliver precise, power-aware ride intelligence. These anti-patterns are the failure modes we explicitly guard against.
+Road Cycling exists to deliver precise, power-aware ride intelligence. These anti-patterns are the failure modes we explicitly guard against.
 
 ---
 

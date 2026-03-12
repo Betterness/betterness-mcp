@@ -8,7 +8,7 @@ Powered by [Betterness Graph](https://betterness.ai) and [Betterness MCP](https:
 
 ## What It Does
 
-Studio Operator wraps around your boutique fitness experience — what happens before and after class is where the real gains live:
+Barry's wraps around your boutique fitness experience — what happens before and after class is where the real gains live:
 
 - **Class-day readiness** — should you go hard today, dial it to 80%, or skip and recover?
 - **Post-workout recovery** — hydration, protein timing, cooldown plan based on how your body responded
@@ -58,7 +58,7 @@ Link at least one wearable through your Betterness account:
 
 Open your workspace and ask: **"I have class today — am I ready?"**
 
-Studio Operator handles the rest.
+Barry's handles the rest.
 
 ---
 
@@ -101,7 +101,7 @@ barrys-studio/
 
 ## Optional: Lab Biomarkers
 
-When lab data is connected through Betterness, Studio Operator layers biomarker context into readiness reasoning:
+When lab data is connected through Betterness, Barry's layers biomarker context into readiness reasoning:
 - Cortisol, DHEA-S (stress axis — are you overtrained?)
 - CRP, ferritin (inflammation — is your body recovering between sessions?)
 - Testosterone, free T (anabolic capacity)
@@ -121,12 +121,12 @@ When lab data is connected through Betterness, Studio Operator layers biomarker 
 
 ## Part of BetterClaw OS
 
-Barry's / Studio Operator is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
+Barry's is a [BetterClaw OS](https://github.com/Betterness/betterness-mcp/tree/main/starters/betterclaw-os) package — the Betterness-powered health workspace system for OpenClaw.
 
 Other BetterClaw OS packages:
-- Recovery Operator
-- Marathon Operator
-- Biohacker Lab Operator
+- Recovery
+- Marathon
+- Biohacker Lab
 - And more at [github.com/Betterness/betterness-mcp](https://github.com/Betterness/betterness-mcp)
 
 ---

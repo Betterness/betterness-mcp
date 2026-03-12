@@ -1,4 +1,4 @@
-# Barry's / Studio Operator — Agents
+# Barry's — Agents
 
 ## Primary Agent: Studio Coach
 

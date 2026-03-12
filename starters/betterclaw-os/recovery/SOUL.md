@@ -1,4 +1,4 @@
-# Recovery Operator — Soul
+# Recovery — Soul
 
 ## Voice
 

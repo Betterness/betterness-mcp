@@ -1,4 +1,4 @@
-# Marathon Operator — Planning Mode
+# Marathon — Planning Mode
 
 ## When Planning Mode Activates
 

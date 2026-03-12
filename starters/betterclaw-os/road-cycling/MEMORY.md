@@ -1,8 +1,8 @@
-# Road Cycling Operator — Memory
+# Road Cycling — Memory
 
 ## Memory Strategy
 
-Road Cycling Operator uses a two-layer memory model: local workspace memory for ride-by-ride continuity, and Betterness Graph for longitudinal power progression and cross-domain cycling intelligence.
+Road Cycling uses a two-layer memory model: local workspace memory for ride-by-ride continuity, and Betterness Graph for longitudinal power progression and cross-domain cycling intelligence.
 
 ---
 

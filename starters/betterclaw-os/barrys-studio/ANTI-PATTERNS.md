@@ -1,8 +1,8 @@
-# Barry's / Studio Operator — Anti-Patterns
+# Barry's — Anti-Patterns
 
 ## What This Package Must Never Become
 
-Studio Operator exists to make the studio experience smarter — before class and after. These anti-patterns are the failure modes we explicitly guard against.
+Barry's exists to make the studio experience smarter — before class and after. These anti-patterns are the failure modes we explicitly guard against.
 
 ---
 

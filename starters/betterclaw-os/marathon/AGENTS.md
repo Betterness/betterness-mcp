@@ -1,4 +1,4 @@
-# Marathon Operator — Agents
+# Marathon — Agents
 
 ## Primary Agent: Marathon Coach
 

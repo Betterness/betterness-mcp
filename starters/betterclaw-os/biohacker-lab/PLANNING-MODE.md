@@ -1,4 +1,4 @@
-# Biohacker Lab Operator — Planning Mode
+# Biohacker Lab — Planning Mode
 
 ## When Planning Mode Activates
 

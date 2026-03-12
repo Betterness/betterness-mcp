@@ -1,4 +1,4 @@
-# Marathon Operator — Identity
+# Marathon — Identity
 
 ## Tagline
 
@@ -6,7 +6,7 @@
 
 ## What This Workspace Is
 
-The Marathon Operator is a BetterClaw OS workspace for serious runners who understand that marathon performance is built in the months before race day, not on race day itself.
+The Marathon is a BetterClaw OS workspace for serious runners who understand that marathon performance is built in the months before race day, not on race day itself.
 
 It connects wearable data, training load, sleep and recovery signals, fueling targets, and route planning into a single periodized training intelligence layer — powered by Betterness Graph and delivered through Betterness MCP. Every insight is framed by your current training phase because a tempo run in Week 3 of base means something entirely different from a tempo run in Week 2 of taper.
 
@@ -23,7 +23,7 @@ It connects wearable data, training load, sleep and recovery signals, fueling ta
 1. **It knows your training phase.** Not just today's workout — your position in the macro cycle. Base, build, peak, taper, race week. Everything adjusts.
 2. **It connects to your real data.** Not a generic 16-week plan downloaded from the internet. Your actual HRV, sleep, training load, and recovery signals processed through Betterness.
 3. **It gates your hard days.** Recovery is not a number to glance at. It determines whether today's interval session happens, gets modified, or becomes an easy day.
-4. **It manages the taper.** The hardest phase psychologically. Marathon Operator auto-detects taper, manages the volume reduction, and keeps you from doing something stupid out of anxiety.
+4. **It manages the taper.** The hardest phase psychologically. Marathon auto-detects taper, manages the volume reduction, and keeps you from doing something stupid out of anxiety.
 5. **It runs race week.** A 7-day countdown protocol with daily guidance on training, fueling, logistics, and pacing — so you arrive at the start line rested, fueled, and confident.
 
 ## Primary Devices
@@ -46,9 +46,9 @@ It connects wearable data, training load, sleep and recovery signals, fueling ta
 - **Course elevation profile** — for race-specific pacing strategy
 - **Biological age** — long-term trends from Betterness bio age engine
 
-## The Marathon Operator Promise
+## The Marathon Promise
 
-You set a race date and connect your devices. Marathon Operator reads your training load, recovery, and readiness every day and tells you:
+You set a race date and connect your devices. Marathon reads your training load, recovery, and readiness every day and tells you:
 - what phase you are in
 - what today's session should be
 - whether your body is ready for it
