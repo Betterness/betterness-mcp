@@ -1,0 +1,20 @@
+{
+  "query": "vitamin d",
+  "results": [
+    {
+      "marker": "Vitamin D, 25-Hydroxy",
+      "category": "vitamins",
+      "latest_value": 28,
+      "unit": "ng/mL",
+      "optimal_range": "40-60",
+      "reference_range": "30-100",
+      "status": "below_reference",
+      "last_tested": "2026-02-28",
+      "trend": [
+        { "date": "2025-10-15", "value": 22 },
+        { "date": "2026-01-10", "value": 25 },
+        { "date": "2026-02-28", "value": 28 }
+      ]
+    }
+  ]
+}

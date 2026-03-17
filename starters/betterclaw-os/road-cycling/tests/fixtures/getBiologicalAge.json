@@ -1,0 +1,18 @@
+{
+  "bio_age": 28.3,
+  "chronological_age": 31,
+  "delta": -2.7,
+  "trend": {
+    "6_months_ago": 29.5,
+    "3_months_ago": 28.9,
+    "current": 28.3,
+    "direction": "improving",
+    "rate_per_month": -0.2
+  },
+  "top_contributors": [
+    { "factor": "sleep_quality", "impact": "positive", "weight": 0.25 },
+    { "factor": "inflammation", "impact": "positive", "weight": 0.20 },
+    { "factor": "vitamin_d", "impact": "negative", "weight": 0.15 }
+  ],
+  "calculated_at": "2026-03-15T00:00:00Z"
+}

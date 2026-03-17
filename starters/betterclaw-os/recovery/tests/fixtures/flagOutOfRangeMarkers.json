@@ -1,0 +1,29 @@
+{
+  "flagged": [
+    {
+      "marker": "Vitamin D, 25-Hydroxy",
+      "value": 28,
+      "unit": "ng/mL",
+      "optimal_range": "40-60",
+      "reference_range": "30-100",
+      "status": "below_reference",
+      "severity": "moderate",
+      "recommendation": "Consider supplementing with 5,000 IU Vitamin D3 daily with K2. Retest in 3 months.",
+      "last_tested": "2026-02-28"
+    },
+    {
+      "marker": "Ferritin",
+      "value": 22,
+      "unit": "ng/mL",
+      "optimal_range": "50-150",
+      "reference_range": "30-400",
+      "status": "below_reference",
+      "severity": "moderate",
+      "recommendation": "Consider iron-rich foods or supplementation. Test with iron panel for full picture.",
+      "last_tested": "2026-02-28"
+    }
+  ],
+  "total_markers_checked": 47,
+  "in_range": 45,
+  "out_of_range": 2
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-03-17",
+  "sleep": {
+    "duration_hours": 7.2,
+    "deep_sleep_hours": 1.8,
+    "rem_sleep_hours": 1.9,
+    "light_sleep_hours": 3.1,
+    "awakenings": 2,
+    "efficiency": 0.91,
+    "bedtime": "2026-03-16T22:45:00Z",
+    "wake_time": "2026-03-17T06:15:00Z"
+  },
+  "hrv": {
+    "current_ms": 62,
+    "avg_7d_ms": 58,
+    "avg_30d_ms": 55,
+    "trend_7d": [48, 52, 58, 52, 50, 55, 62],
+    "trend_direction": "up"
+  },
+  "heart_rate": {
+    "resting_bpm": 52,
+    "avg_7d_bpm": 54,
+    "min_bpm": 45,
+    "max_bpm": 165
+  },
+  "activity": {
+    "steps": 8400,
+    "active_minutes": 45,
+    "calories_burned": 2200,
+    "strain_score": 12.4
+  },
+  "respiratory_rate": {
+    "avg_brpm": 14.2
+  },
+  "temperature": {
+    "deviation_c": -0.1
+  }
+}
