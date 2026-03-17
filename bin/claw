@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Betterness CLI wrapper for claw commands
+# Usage: claw workspace install betterness/<package>
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+case "${1:-}" in
+  workspace)
+    shift
+    exec "$SCRIPT_DIR/claw-workspace-install" "$@"
+    ;;
+  *)
+    echo "Usage: claw workspace install betterness/<package>"
+    echo ""
+    echo "Commands:"
+    echo "  workspace install   Install a BetterClaw workspace package"
+    exit 1
+    ;;
+esac
