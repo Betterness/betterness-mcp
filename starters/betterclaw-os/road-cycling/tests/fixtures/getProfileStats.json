@@ -1,0 +1,12 @@
+{
+  "age": 31,
+  "gender": "male",
+  "location": "New York, NY",
+  "health_summary": {
+    "bio_age": 28.3,
+    "bio_age_trend": -1.2,
+    "bio_age_trend_period": "6_months",
+    "primary_goals": ["sleep_optimization", "longevity"],
+    "active_since": "2025-09-15"
+  }
+}

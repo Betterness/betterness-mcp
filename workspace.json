@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "provider": "betterness",
+  "repository": "https://github.com/Betterness/betterness-mcp",
+  "description": "BetterClaw OS workspace packages — pre-built health environments powered by Betterness MCP.",
+  "packages": {
+    "betterness/recovery": {
+      "path": "starters/betterclaw-os/recovery",
+      "name": "Recovery Operator",
+      "description": "Sleep architecture, HRV trends, and readiness gating.",
+      "version": "1.0.0",
+      "modules": 5,
+      "skills": 4,
+      "devices": ["Oura", "WHOOP", "Apple Watch", "Garmin", "Eight Sleep"]
+    },
+    "betterness/marathon": {
+      "path": "starters/betterclaw-os/marathon",
+      "name": "Marathon Operator",
+      "description": "Training load, periodization, race prep, and taper intelligence.",
+      "version": "1.0.0",
+      "modules": 7,
+      "skills": 2,
+      "devices": ["Garmin", "Apple Watch", "COROS", "Polar"]
+    },
+    "betterness/road-cycling": {
+      "path": "starters/betterclaw-os/road-cycling",
+      "name": "Road Cycling Operator",
+      "description": "Power zones, ride planning, route building, and weekly load tracking.",
+      "version": "1.0.0",
+      "modules": 7,
+      "skills": 3,
+      "devices": ["Garmin", "Wahoo", "Zwift", "TrainerRoad"]
+    },
+    "betterness/barrys-studio": {
+      "path": "starters/betterclaw-os/barrys-studio",
+      "name": "Barry's / Studio Operator",
+      "description": "Class readiness, intensity modulation, and post-workout recovery.",
+      "version": "1.0.0",
+      "modules": 6,
+      "skills": 2,
+      "devices": ["Apple Watch", "WHOOP", "Oura"]
+    },
+    "betterness/biohacker-lab": {
+      "path": "starters/betterclaw-os/biohacker-lab",
+      "name": "Biohacker Lab Operator",
+      "description": "Biological age tracking, protocol management, and retest planning.",
+      "version": "1.0.0",
+      "modules": 7,
+      "skills": 2,
+      "devices": ["Oura", "Levels CGM", "Apple Watch", "InsideTracker"]
+    }
+  }
+}

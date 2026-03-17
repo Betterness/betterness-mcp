@@ -1,0 +1,7 @@
+# Betterness credentials and local state
+.betterness/
+
+# Local memory files (personalized during install)
+memory/devices.md
+memory/health-snapshot.md
+memory/preferences.md
