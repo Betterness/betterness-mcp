@@ -1,0 +1,25 @@
+{
+  "total_results": 47,
+  "most_recent_panel": {
+    "name": "Comprehensive Metabolic Panel",
+    "date": "2026-02-28",
+    "provider": "Quest Diagnostics",
+    "results": [
+      { "marker": "Vitamin D, 25-Hydroxy", "value": 28, "unit": "ng/mL", "range": "30-100", "status": "low" },
+      { "marker": "Ferritin", "value": 22, "unit": "ng/mL", "range": "30-400", "status": "low" },
+      { "marker": "Cortisol AM", "value": 22, "unit": "µg/dL", "range": "6-23", "status": "normal" },
+      { "marker": "CRP", "value": 0.4, "unit": "mg/L", "range": "0-3", "status": "optimal" },
+      { "marker": "TSH", "value": 1.8, "unit": "mIU/L", "range": "0.4-4.0", "status": "normal" },
+      { "marker": "Free T4", "value": 1.2, "unit": "ng/dL", "range": "0.8-1.8", "status": "normal" },
+      { "marker": "Testosterone, Total", "value": 650, "unit": "ng/dL", "range": "264-916", "status": "normal" },
+      { "marker": "DHEA-S", "value": 320, "unit": "µg/dL", "range": "100-600", "status": "normal" },
+      { "marker": "HbA1c", "value": 5.1, "unit": "%", "range": "4.0-5.6", "status": "normal" },
+      { "marker": "Magnesium", "value": 2.0, "unit": "mg/dL", "range": "1.7-2.2", "status": "normal" }
+    ]
+  },
+  "panels_count": 5,
+  "date_range": {
+    "first": "2025-10-15",
+    "last": "2026-02-28"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "error": "Too Many Requests",
+  "message": "Rate limit exceeded. Maximum 50 requests per minute.",
+  "status": 429,
+  "retry_after": 60
+}
