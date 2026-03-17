@@ -1,0 +1,13 @@
+{
+  "id": "usr_test_12345",
+  "name": "Test User",
+  "email": "test@example.com",
+  "health_goals": ["improve_sleep", "optimize_recovery", "track_biomarkers"],
+  "preferences": {
+    "units": "imperial",
+    "timezone": "America/New_York",
+    "notifications": true
+  },
+  "created_at": "2025-09-15T10:00:00Z",
+  "plan": "pro"
+}

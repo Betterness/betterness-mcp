@@ -1,6 +1,20 @@
 # Connecting Betterness MCP to Clawbot / OpenClaw
 
-Clawbot is a persistent AI workspace built on [OpenClaw](https://openclaw.ai). Unlike chat-based interfaces, Clawbot provides a mission-control environment where your health data, tools, and workflows live across sessions. It is the recommended client for users who want always-on health intelligence.
+Clawbot is a persistent AI workspace built on [OpenClaw](https://openclaw.ai). Unlike chat-based interfaces, Clawbot provides a mission-control environment where your health data, tools, and workflows live across sessions.
+
+## Recommended: BetterClaw OS Install
+
+The fastest way to get started with Betterness on OpenClaw is the one-command installer:
+
+```bash
+claw workspace install betterness/recovery
+```
+
+This authenticates, pulls your health data, personalizes your workspace, and starts the daily heartbeat — all automatically. See the [BetterClaw OS docs](../../starters/betterclaw-os/START-HERE.md) for details.
+
+The sections below cover manual MCP setup for users who want to build custom workspaces from scratch.
+
+---
 
 ## What Clawbot Provides
 
@@ -13,10 +27,14 @@ Clawbot is a persistent AI workspace built on [OpenClaw](https://openclaw.ai). U
 ## Prerequisites
 
 1. **Betterness account** at [betterness.ai](https://betterness.ai)
-2. **MCP API key** from [betterness.ai/mcp/keys](https://betterness.ai/mcp/keys)
+2. **MCP API key** — get one at [betterness.ai/mcp/keys](https://betterness.ai/mcp/keys), or via the CLI:
+   ```bash
+   npm install -g @betterness/cli
+   betterness auth login
+   ```
 3. **Clawbot account** at [openclaw.ai](https://openclaw.ai)
 
-## Auth Setup
+## Manual MCP Setup
 
 In Clawbot's MCP connection settings, configure:
 
@@ -25,7 +43,7 @@ In Clawbot's MCP connection settings, configure:
 | **Endpoint** | `https://api.betterness.ai/mcp` |
 | **Transport** | Streamable HTTP |
 | **Authentication** | Bearer Token |
-| **Token** | Your Betterness API key |
+| **Token** | Your Betterness API key (`bk_*`) |
 
 ### Steps
 
@@ -35,90 +53,47 @@ In Clawbot's MCP connection settings, configure:
 4. Click **Test Connection** to verify
 5. Save the configuration
 
-## Workspace Structure
+## Workspace Patterns
 
-The recommended workspace layout follows the structure in `starters/openclaw-mission-control/`. This gives you a health-focused mission control with pre-configured panels:
+### Pattern 1: BetterClaw OS Package (Recommended)
+
+Use the pre-built workspace packages:
+
+```bash
+claw workspace install betterness/recovery    # Sleep, stress, recovery
+claw workspace install betterness/marathon     # Race training (coming soon)
+claw workspace install betterness/biohacker-lab # Labs, protocols (coming soon)
+```
+
+Each package includes workspace files, skills, modules, heartbeat configuration, and the magic moment installer.
+
+### Pattern 2: Mission Control (Custom)
+
+For users who want full control, use the mission control starter:
 
 ```
 betterness-workspace/
 ├── missions/
-│   ├── daily-brief.md          # Morning health readiness check
-│   ├── lab-tracking.md         # Biomarker trend monitoring
-│   └── sleep-optimization.md   # Sleep quality improvement protocol
+│   ├── daily-brief.md
+│   ├── lab-tracking.md
+│   └── sleep-optimization.md
 ├── skills/
-│   ├── active-skills.json      # Currently loaded Betterness skills
-│   └── persona-config.json     # Active persona overlay
+│   └── active-skills.json
 ├── dashboards/
-│   ├── vitals.md               # Real-time vitals dashboard
-│   ├── biomarkers.md           # Lab result trends
-│   └── readiness.md            # Training readiness score
+│   ├── vitals.md
+│   ├── biomarkers.md
+│   └── readiness.md
 └── logs/
-    └── health-journal.md       # AI-assisted health journal
+    └── health-journal.md
 ```
 
-## Install Order
+See `starters/openclaw-mission-control/` for the full template.
 
-Follow these 10 steps to set up a complete Betterness health workspace in Clawbot:
-
-1. **Create workspace** — New workspace named "Betterness Health"
-2. **Connect MCP** — Add the Betterness MCP server (see Auth Setup above)
-3. **Verify tools** — Run `listConnectedDevices` to confirm the connection works
-4. **Load core skills** — Import skills from `skills/health-data/` (sleep analysis, biomarker review, vitals monitoring)
-5. **Set persona** — Choose a persona overlay (e.g., `sports-medicine-overlay` for athletes, `longevity-overlay` for biohackers)
-6. **Create daily brief mission** — Set up a recurring morning health readiness check using `getSleepData`, `getVitals`, and `getActivityData`
-7. **Create lab tracking mission** — Configure biomarker monitoring with alerts for out-of-range values
-8. **Build dashboards** — Set up vitals, biomarkers, and readiness dashboard panels
-9. **Configure notifications** — Set up Telegram or email alerts for critical health events
-10. **Run initial health audit** — Execute a full health data review to establish your baseline
-
-## Installation Patterns
-
-### Pattern 1: Personal Health Dashboard
-
-For individuals tracking their own health.
-
-**Skills to load:**
-- `sleep-quality-analyzer`
-- `biomarker-trend-reviewer`
-- `training-readiness-evaluator`
-- `morning-brief-composer`
-
-**Persona overlay:** `longevity-overlay` or `sports-medicine-overlay`
-
-**Missions:**
-- Daily morning brief (scheduled, 6:00 AM)
-- Weekly biomarker review (scheduled, Sunday evening)
-- On-demand training readiness checks
-
-**Configuration:**
-```json
-{
-  "workspace": "personal-health",
-  "skills": [
-    "sleep-quality-analyzer",
-    "biomarker-trend-reviewer",
-    "training-readiness-evaluator",
-    "morning-brief-composer"
-  ],
-  "persona": "longevity-overlay",
-  "schedules": [
-    { "mission": "daily-brief", "cron": "0 6 * * *" },
-    { "mission": "weekly-biomarker-review", "cron": "0 18 * * 0" }
-  ]
-}
-```
-
-### Pattern 2: Private Clinic
+### Pattern 3: Private Clinic
 
 For concierge practices and longevity clinics managing multiple patients.
 
-**Skills to load:**
-- `biomarker-trend-reviewer`
-- `lab-gap-detector`
-- `pre-visit-summarizer`
-- `population-health-scanner`
-
-**Persona overlay:** `clinical-overlay`
+**Skills to load:** biomarker-trend-reviewer, lab-gap-detector, pre-visit-summarizer, population-health-scanner
 
 **Missions:**
 - Pre-visit patient summaries (triggered before appointments)
@@ -126,99 +101,20 @@ For concierge practices and longevity clinics managing multiple patients.
 - Lab gap detection for all patients (weekly)
 - Critical value alerts (real-time)
 
-**Configuration:**
-```json
-{
-  "workspace": "clinic-ops",
-  "skills": [
-    "biomarker-trend-reviewer",
-    "lab-gap-detector",
-    "pre-visit-summarizer",
-    "population-health-scanner"
-  ],
-  "persona": "clinical-overlay",
-  "schedules": [
-    { "mission": "population-dashboard", "cron": "0 5 * * *" },
-    { "mission": "lab-gap-scan", "cron": "0 8 * * 1" }
-  ],
-  "alerts": {
-    "critical-values": true,
-    "channel": "telegram"
-  }
-}
-```
-
-### Pattern 3: Business Operator (Betterness One)
-
-For wellness businesses using BETT-i as an operating system.
-
-**Skills to load:**
-- `morning-brief-composer`
-- `biomarker-trend-reviewer`
-- `content-performance-analyzer`
-- `audience-health-profiler`
-
-**Persona overlay:** `business-overlay`
-
-**Missions:**
-- Daily business + health brief (scheduled)
-- Content performance tied to health topics (weekly)
-- Audience health interest profiling (weekly)
-- Client health milestone tracking (ongoing)
-
-**Configuration:**
-```json
-{
-  "workspace": "betterness-one",
-  "skills": [
-    "morning-brief-composer",
-    "biomarker-trend-reviewer",
-    "content-performance-analyzer",
-    "audience-health-profiler"
-  ],
-  "persona": "business-overlay",
-  "schedules": [
-    { "mission": "daily-brief", "cron": "0 6 * * *" },
-    { "mission": "content-review", "cron": "0 9 * * 1" },
-    { "mission": "audience-profiling", "cron": "0 10 * * 1" }
-  ]
-}
-```
-
 ## Smoke Tests
 
-After completing the install, verify with these commands in your Clawbot workspace:
+After setup, verify with these prompts:
 
-### 1. Device check
-```
-List all my connected health devices.
-```
-Expected: Returns your linked wearables and data sources.
-
-### 2. Data pull
-```
-Show me last night's sleep data with stage breakdowns.
-```
-Expected: Returns sleep duration, stages (deep, REM, light, awake), and quality metrics.
-
-### 3. Multi-tool composition
-```
-Give me a full health readiness assessment for today.
-```
-Expected: Clawbot calls `getSleepData`, `getVitals`, `getActivityData`, and `getBodyComposition`, then synthesizes a readiness score with narrative explanation.
-
-### 4. Lab integration
-```
-What biomarkers am I missing data for? Suggest labs to order.
-```
-Expected: Calls `getUserLabData` and `listAvailableLabTests`, identifies gaps, and recommends specific panels.
-
-### 5. Scheduled mission
-Trigger your daily brief mission manually and confirm it executes the full skill chain and delivers results.
+| Test | Prompt | Expected |
+|------|--------|----------|
+| Device check | "List all my connected health devices" | Returns linked wearables |
+| Data pull | "Show me last night's sleep data with stage breakdowns" | Sleep duration, stages, quality |
+| Multi-tool | "Give me a full health readiness assessment" | Synthesized readiness score |
+| Lab integration | "What biomarkers am I missing?" | Identifies gaps, recommends panels |
 
 ## Tips
 
-- **Pin your most-used skills** to the workspace sidebar for quick access.
-- **Use mission templates** from `starters/openclaw-mission-control/` as starting points, then customize.
-- **Layer persona overlays** to shift the agent's reasoning style without changing the underlying skills.
-- **Review the health journal** weekly — Clawbot logs insights that are easy to miss in real-time.
+- **Pin your most-used skills** to the workspace sidebar for quick access
+- **Use BetterClaw OS packages** as starting points, then customize
+- **Layer persona overlays** to shift the agent's reasoning style without changing underlying skills
+- **Review the health journal** weekly — Clawbot logs insights that are easy to miss in real-time

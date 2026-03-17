@@ -12,16 +12,123 @@
 
 Choose the path that matches what you want to do:
 
-- **Universal AI integration** → use Betterness MCP
-- **Fast local and terminal workflows** → see `docs/cli/`
-- **OpenClaw health workspace** → start with [BetterClaw OS Recovery](starters/betterclaw-os/recovery/)
-- **OpenClaw mission-control baseline** → use [openclaw-mission-control](starters/openclaw-mission-control/)
+| Path | Best For | Get Started |
+|------|----------|-------------|
+| **BetterClaw OS** | Autonomous health workspace with AI agents | `claw workspace install betterness/recovery` |
+| **Betterness MCP** | Universal AI integration (Claude, ChatGPT, Cursor) | [Quick Start](#quick-start) |
+| **Betterness CLI** | Terminal power users, scripts, cron jobs | `npm i -g @betterness/cli` |
 
-If this is your first BetterClaw install, start with **Recovery**. It is the easiest package to understand and the best template for the rest.
+If this is your first time, start with **BetterClaw OS Recovery** — one command installs a fully personalized health workspace with your real data.
 
 ---
 
-## Tools
+## BetterClaw OS — One Command, Full Health Workspace
+
+```bash
+claw workspace install betterness/recovery
+```
+
+The installer connects your Betterness account, pulls 7 data sources in parallel (profile, devices, health metrics, labs, bio age, flagged markers), personalizes your workspace files, and reveals an animated health card — the product's signature "magic moment."
+
+### What You Get
+
+```
+recovery/
+├── AGENTS.md              # AI specialists activated based on YOUR devices and data
+├── SOUL.md                # Voice and communication style
+├── IDENTITY.md            # Personalized with your name, goals, health context
+├── HEARTBEAT.md           # Morning/evening crons customized from your sleep patterns
+├── skills/
+│   ├── install.md         # Magic moment installer (runs once)
+│   ├── refresh.md         # Daily data refresh (heartbeat-triggered)
+│   ├── recovery-verdict.md # Morning recovery scoring
+│   └── sleep-analysis.md  # Overnight sleep interpretation
+├── memory/                # Your devices, health snapshot, preferences
+├── modules/               # Sleep architecture, HRV trend, readiness gate, rest day, bedtime
+├── tests/fixtures/        # 14 MCP response fixtures for testing
+└── .betterness/           # Token + birth certificate (gitignored)
+```
+
+### Packages
+
+| Package | Description |
+|---------|-------------|
+| [**Recovery**](starters/betterclaw-os/recovery/) | Sleep, stress, nervous system recovery — morning verdicts, training gates, bedtime optimizer |
+| [Marathon](starters/betterclaw-os/marathon/) | Training cycles, taper workflows, race-day prep, post-race recovery |
+| [Biohacker Lab](starters/betterclaw-os/biohacker-lab/) | Biomarker tracking, protocol experiments, N-of-1 design |
+| [Road Cycling](starters/betterclaw-os/road-cycling/) | Power zones, recovery between rides, event prep |
+| [Barry's Studio](starters/betterclaw-os/barrys-studio/) | Custom studio operator for Barry's Bootcamp |
+
+### Partner Cloning
+
+Create custom workspaces for new partners:
+
+```bash
+./bin/clone-workspace.sh my-studio --config partners/my-studio.yaml
+```
+
+See [START-HERE.md](starters/betterclaw-os/START-HERE.md) for the full onboarding guide.
+
+---
+
+## Betterness CLI
+
+**`npm install -g @betterness/cli`**
+
+The fast terminal interface — 16 command groups covering every MCP capability.
+
+```bash
+betterness auth login                          # Save your API key
+betterness workflow daily-brief                # Morning health summary
+betterness sleep get --from 2026-03-10         # Sleep data
+betterness biomarkers search --name "vitamin d" --range OUT_OF_RANGE
+betterness connected-devices list              # Your wearables
+betterness lab-orders service-centers --zip-code 94102 --order-id "abc"
+```
+
+| Group | Commands |
+|-------|----------|
+| `auth` | `login`, `logout`, `whoami` |
+| `profile` | `get`, `update` |
+| `biomarkers` | `search`, `loinc-codes` |
+| `biological-age` | `get` |
+| `activity` | `get` |
+| `sleep` | `get`, `stages` |
+| `vitals` | `get` |
+| `body-composition` | `get` |
+| `connected-devices` | `list`, `available`, `link`, `apple-health-code`, `disconnect` |
+| `lab-tests` | `list` |
+| `lab-records` | `list`, `detail` |
+| `lab-orders` | `initialize`, `service-centers`, `slots`, `book`, `reschedule`, `cancel` |
+| `lab-results` | `update-status`, `update-biomarker`, `update-metadata`, `upload-link` |
+| `purchases` | `payment-methods`, `buy`, `checkout` |
+| `smart-listings` | `search`, `detail` |
+| `workflow` | `daily-brief`, `next-actions` |
+
+Every command supports `--json`, `--markdown`, and `--quiet` output modes.
+
+Full reference: [docs/cli/README.md](docs/cli/README.md)
+
+---
+
+## Three Access Paths, One Platform
+
+```
+@betterness/cli                    MCP Server                        BetterClaw OS
+(terminal power users)             (AI agents)                       (autonomous workspaces)
+─────────────────────              ──────────                        ─────────────
+betterness sleep get               tools/call: getSleepData          "How did I sleep?"
+betterness workflow daily-brief    tools/call: getProfileStats       Morning heartbeat auto-runs
+betterness biomarkers search       tools/call: searchBiomarkers      Flagged in health snapshot
+
+Install:                           Connect:                          Install:
+npm i -g @betterness/cli          Add to MCP config                 claw workspace install
+betterness auth login              Authorization: Bearer bk_*        betterness/recovery
+```
+
+---
+
+## MCP Tools (32)
 
 ### User Profile
 
@@ -111,8 +218,6 @@ If this is your first BetterClaw install, start with **Recovery**. It is the eas
 
 ### Claude Desktop
 
-Add the following to your Claude Desktop MCP configuration:
-
 ```json
 {
   "mcpServers": {
@@ -124,45 +229,29 @@ Add the following to your Claude Desktop MCP configuration:
 }
 ```
 
-Replace `YOUR_KEY` with your Betterness API key. Get one at [betterness.ai/builders](https://betterness.ai/builders).
+Get your API key at [betterness.ai/mcp/keys](https://betterness.ai/mcp/keys).
 
 ### ChatGPT Actions
 
-ChatGPT Actions require an HTTP proxy to bridge the MCP transport. See [docs/clients/chatgpt-actions.md](docs/clients/chatgpt-actions.md) for the full setup guide, including the OpenAPI spec and proxy configuration.
+See [docs/clients/chatgpt-actions.md](docs/clients/chatgpt-actions.md) for the proxy setup guide.
 
-### Clawbot / OpenClaw
+### OpenClaw / Clawbot
 
-Clawbot is an OpenClaw agent that connects to Betterness MCP natively. Register your bot at [betterness.ai/builders](https://betterness.ai/builders), link it to your Betterness workspace, and the 32 health tools are available immediately -- no additional configuration required. Clawbot's SKILLS architecture routes tool calls through the SkillGraph for intelligent multi-step health workflows.
+For a basic MCP connection, register your bot at [betterness.ai/builders](https://betterness.ai/builders).
 
-If you want a premium OpenClaw workspace rather than a basic MCP connection, start with [BetterClaw OS](starters/betterclaw-os/README.md) and use the [Recovery package](starters/betterclaw-os/recovery/README.md) as the first install.
+For a premium autonomous workspace, use BetterClaw OS:
+
+```bash
+claw workspace install betterness/recovery
+```
 
 ---
 
 ## Skills Library
 
-The [`skills/`](skills/) directory contains **119 pre-built skills** across **17 categories** that compose Betterness MCP tools into higher-level health workflows. Skills are declarative YAML definitions that the SkillGraph engine resolves at runtime, handling dependency ordering, parallel execution, and context passing between tools.
+The [`skills/`](skills/) directory contains **119 pre-built skills** across **17 categories** that compose Betterness MCP tools into higher-level health workflows.
 
 Browse the full catalog at [betterness.ai/skills](https://betterness.ai/skills).
-
----
-
-## Starter Kits
-
-The [`starters/`](starters/) directory provides ready-to-run example projects demonstrating common integration patterns: wearable dashboards, biomarker tracking agents, lab ordering flows, and more. Each starter includes a working configuration, sample prompts, and step-by-step instructions.
-
-### BetterClaw OS
-
-[`starters/betterclaw-os/`](starters/betterclaw-os/) contains the premium OpenClaw workspace system for Betterness.
-
-Flagship packages:
-
-- [Recovery](starters/betterclaw-os/recovery/README.md)
-- [Marathon](starters/betterclaw-os/marathon/README.md)
-- [Biohacker Lab](starters/betterclaw-os/biohacker-lab/README.md)
-- [Road Cycling](starters/betterclaw-os/road-cycling/README.md)
-- [Barry's](starters/betterclaw-os/barrys-studio/README.md)
-
-Start with [Recovery](starters/betterclaw-os/recovery/README.md) if you want the fastest path with the least confusion.
 
 ---
 
@@ -172,6 +261,8 @@ Start with [Recovery](starters/betterclaw-os/recovery/README.md) if you want the
 |----------|-----|
 | Website | [betterness.ai](https://betterness.ai) |
 | MCP Guide | [betterness.ai/mcp](https://betterness.ai/mcp) |
+| CLI Reference | [docs/cli/](docs/cli/README.md) |
+| BetterClaw OS | [starters/betterclaw-os/](starters/betterclaw-os/START-HERE.md) |
 | Skills Catalog | [betterness.ai/skills](https://betterness.ai/skills) |
 | Builders Portal | [betterness.ai/builders](https://betterness.ai/builders) |
 
@@ -179,4 +270,4 @@ Start with [Recovery](starters/betterclaw-os/recovery/README.md) if you want the
 
 ## License
 
-MIT -- see [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE) for details.

@@ -1,0 +1,34 @@
+{
+  "devices": [
+    {
+      "id": "dev_001",
+      "name": "Oura Ring Gen 3",
+      "type": "ring",
+      "manufacturer": "Oura",
+      "last_sync": "2026-03-17T04:30:00Z",
+      "status": "active",
+      "data_streams": ["sleep", "hrv", "heart_rate", "temperature", "spo2", "readiness"],
+      "battery": 72
+    },
+    {
+      "id": "dev_002",
+      "name": "WHOOP 4.0",
+      "type": "band",
+      "manufacturer": "WHOOP",
+      "last_sync": "2026-03-17T02:15:00Z",
+      "status": "active",
+      "data_streams": ["sleep", "hrv", "heart_rate", "strain", "recovery", "respiratory_rate"],
+      "battery": 58
+    },
+    {
+      "id": "dev_003",
+      "name": "Apple Watch Series 9",
+      "type": "watch",
+      "manufacturer": "Apple",
+      "last_sync": "2026-03-03T08:00:00Z",
+      "status": "active",
+      "data_streams": ["sleep", "heart_rate", "spo2", "activity", "respiratory_rate"],
+      "battery": null
+    }
+  ]
+}
