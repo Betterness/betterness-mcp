@@ -49,7 +49,7 @@ Close the loop between product purchase and health outcome:
 
 | Tool | Product Application |
 |------|---------------------|
-| `getUserLabData` | Access user biomarker data for personalized recommendations |
+| `getUserLabRecords` | Access user biomarker data for personalized recommendations |
 | `searchBiomarkers` | Look up specific biomarkers to match against product benefits |
 | `listAvailableLabTests` | Recommend testing to establish baselines before product use |
 | `purchaseLabTest` | Enable users to order labs through the product experience |
@@ -67,7 +67,7 @@ Close the loop between product purchase and health outcome:
 **Prompt**: "Based on my recent bloodwork, what supplements should I actually be taking? I do not want to waste money on things I do not need."
 
 The agent:
-1. Calls `getUserLabData` to pull recent lab results
+1. Calls `getUserLabRecords` to pull recent lab results
 2. Identifies biomarkers that are suboptimal or deficient
 3. Cross-references with the product catalog
 4. Filters out products the user does not need (already optimal)

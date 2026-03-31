@@ -76,7 +76,7 @@ Ordering labs without a doctor is confusing — too many tests, unclear names, a
 
 ## Connection upsells
 - No device connections are required for this skill.
-- After results return, results will be available in `getUserLabData` — inform the user that their results will appear in their health dashboard automatically.
+- After results return, results will be available in `getUserLabRecords` — inform the user that their results will appear in their health dashboard automatically.
 
 ## Action pathways
 - After the appointment is booked, set an expectation: results typically arrive in 24–72 hours.

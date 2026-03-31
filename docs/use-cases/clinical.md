@@ -49,7 +49,7 @@ The agent monitors incoming lab results and wearable data for critical values th
 
 | Tool | Clinical Application |
 |------|---------------------|
-| `getUserLabData` | Pull all lab results for a patient, across providers and time |
+| `getUserLabRecords` | Pull all lab results for a patient, across providers and time |
 | `searchBiomarkers` | Retrieve specific biomarker history with trends |
 | `listAvailableLabTests` | Identify appropriate panels for follow-up testing |
 | `getSleepData` | Assess patient sleep quality and adherence to sleep hygiene |
@@ -67,7 +67,7 @@ The agent monitors incoming lab results and wearable data for critical values th
 
 The agent:
 1. Pulls last visit date and notes context
-2. Calls `getUserLabData` for all labs since last visit
+2. Calls `getUserLabRecords` for all labs since last visit
 3. Calls `getVitals`, `getSleepData`, `getActivityData` for wearable trends
 4. Identifies biomarkers that moved significantly
 5. Flags items for discussion

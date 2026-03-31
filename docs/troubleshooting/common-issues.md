@@ -133,7 +133,7 @@ If this returns `200`, your key is valid. If `401`, the key is the problem.
 
 4. **Data sync delay** — New device connections may take up to 24 hours for historical data to backfill. Recent data typically syncs within 1-2 hours.
 
-5. **Account has no lab data** — Lab-related tools (`getUserLabData`, `searchBiomarkers`) require lab results to be uploaded or synced. Use `listAvailableLabTests` to see what can be ordered.
+5. **Account has no lab data** — Lab-related tools (`getUserLabRecords`, `searchBiomarkers`) require lab results to be uploaded or synced. Use `listAvailableLabTests` to see what can be ordered.
 
 ### Connection Timeout
 

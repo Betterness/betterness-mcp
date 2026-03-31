@@ -57,7 +57,7 @@ Community leaders get a dashboard view:
 | `getVitals` | Group HRV trends, heart rate patterns |
 | `getActivityData` | Group activity levels, training load balance |
 | `getBodyComposition` | Group body composition trends (with consent) |
-| `getUserLabData` | Aggregate biomarker distributions |
+| `getUserLabRecords` | Aggregate biomarker distributions |
 | `searchBiomarkers` | Group-level biomarker searches |
 | `listAvailableLabTests` | Recommend group lab panels for bulk ordering |
 | `listConnectedDevices` | Track device adoption across the community |
@@ -106,7 +106,7 @@ The agent ranks members by HRV improvement percentage (not absolute value, to be
 **Prompt**: "We want to do a group blood panel. What should we test based on our community's data gaps, and can we set up bulk ordering?"
 
 The agent:
-1. Scans `getUserLabData` across members to find the most common gaps
+1. Scans `getUserLabRecords` across members to find the most common gaps
 2. Calls `listAvailableLabTests` to find panels that cover those gaps
 3. Recommends 2-3 panel options with pricing for group ordering
 4. Identifies members who are most overdue

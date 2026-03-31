@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: intermediate
 requires:
-  tools: [searchBiomarkers, getBiologicalAge, getUserLabData]
+  tools: [searchBiomarkers, getBiologicalAge, getUserLabRecords]
   data: Lab results before and after an intervention, biological age data if available
 skillgraph:
   domains: [longevity, biomarkers, analysis, experimentation]
@@ -37,7 +37,7 @@ People spend thousands on supplements, protocols, and services with no way to kn
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve all lab results, sorted by date — this provides both the pre-intervention baseline and the post-intervention results.
+1. Call `getUserLabRecords` to retrieve all lab results, sorted by date — this provides both the pre-intervention baseline and the post-intervention results.
 2. Call `searchBiomarkers` for each relevant marker to get reference ranges, units, and clinical significance thresholds.
 3. Call `getBiologicalAge` to retrieve biological age estimates at both time points if available.
 4. Identify the intervention window:

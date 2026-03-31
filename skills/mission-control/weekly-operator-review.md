@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: intermediate
 requires:
-  tools: [getActivityData, getVitals, getSleepData, searchBiomarkers, getUserLabData, getBiologicalAge]
+  tools: [getActivityData, getVitals, getSleepData, searchBiomarkers, getUserLabRecords, getBiologicalAge]
   data: Past 7 days of wearable data, current biomarker status, and any lab results from the past 90 days
 skillgraph:
   domains: [performance, recovery, biomarkers, longevity, monitoring]
@@ -41,7 +41,7 @@ A weekly health review without structure becomes noise. This skill provides a co
 2. Call `getVitals` for the past 7 days. Calculate: HRV 7-day average vs. prior 7-day average, resting HR trend, and any stress elevation events.
 3. Call `getSleepData` for the past 7 days. Calculate: average sleep duration, average efficiency, number of nights under 85% efficiency, and week-over-week trend.
 4. Call `searchBiomarkers` to retrieve any biomarker values updated this week or flagged as monitoring-critical from prior sessions.
-5. Call `getUserLabData` to check for any new results returned this week.
+5. Call `getUserLabRecords` to check for any new results returned this week.
 6. Call `getBiologicalAge` to retrieve the current biological age reading and any trend since last week.
 7. Generate the Weekly Operator Brief with these sections:
    - **This week at a glance:** 3 numbers that matter most (e.g., avg HRV, sleep efficiency, active days).
@@ -55,7 +55,7 @@ A weekly health review without structure becomes noise. This skill provides a co
 ## When data is missing
 - If any of the three wearable data calls return no data for a given day, note the gap and use the available days for trend calculation, flagging the reduced sample size.
 - If `getBiologicalAge` has no new data this week, use the most recent reading and note the date.
-- If `getUserLabData` returns no new results, skip the biomarker watch section or pull the most recently available values with their dates.
+- If `getUserLabRecords` returns no new results, skip the biomarker watch section or pull the most recently available values with their dates.
 
 ## Connection upsells
 - **WHOOP:** Provides strain score and recovery percentage that make the training and recovery signals dramatically more precise.

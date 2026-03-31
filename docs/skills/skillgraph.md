@@ -23,7 +23,7 @@ sleep-quality-analyzer ──USES_TOOL──> getSleepData
                        ──COMPLEMENTS──> training-readiness-evaluator
                        ──FEEDS_INTO──> morning-brief-composer
 
-biomarker-trend-reviewer ──USES_TOOL──> getUserLabData
+biomarker-trend-reviewer ──USES_TOOL──> getUserLabRecords
                          ──USES_TOOL──> searchBiomarkers
                          ──REQUIRES──> lab-data-source
                          ──FEEDS_INTO──> morning-brief-composer
@@ -78,7 +78,7 @@ When a client loads a skill, the SkillGraph resolver walks the graph to determin
 
 2. **Resolve tool requirements**: Walk `USES_TOOL` edges from all resolved skills:
    - `getSleepData`, `getSleepStages` (from sleep analyzer)
-   - `getUserLabData`, `searchBiomarkers` (from biomarker reviewer)
+   - `getUserLabRecords`, `searchBiomarkers` (from biomarker reviewer)
    - `getVitals`, `getActivityData`, `getBodyComposition` (from readiness evaluator)
 
 3. **Resolve data requirements**: Walk `REQUIRES` edges to identify needed data sources:

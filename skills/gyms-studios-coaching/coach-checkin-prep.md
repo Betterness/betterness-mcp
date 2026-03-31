@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: beginner
 requires:
-  tools: [getActivityData, getVitals, getSleepData, getBodyComposition, searchBiomarkers, getUserLabData]
+  tools: [getActivityData, getVitals, getSleepData, getBodyComposition, searchBiomarkers, getUserLabRecords]
   data: Recent activity history, vitals trends, sleep data, body composition, any available lab results
 skillgraph:
   domains: [coaching, practitioner, performance, data-summary]
@@ -53,7 +53,7 @@ Most clients walk into coach or practitioner check-ins with no prepared data, re
    - Body weight trend
    - Body fat % change if available
    - Muscle mass change if available
-5. Call `getUserLabData` to retrieve any lab results from the past 3 months.
+5. Call `getUserLabRecords` to retrieve any lab results from the past 3 months.
 6. Call `searchBiomarkers` for any labs that are out of range — retrieve clinical context for the coach summary.
 7. Generate the check-in summary in five sections:
 

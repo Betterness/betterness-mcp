@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [searchBiomarkers, getUserLabData, listAvailableLabTests]
+  tools: [searchBiomarkers, getUserLabRecords, listAvailableLabTests]
   data: Prior lab results with dates, biomarker trend history, and available test catalog
 skillgraph:
   domains: [diagnostics, biomarkers, labs, longevity, care-coordination]
@@ -37,7 +37,7 @@ Biomarker tracking loses its value without structured retest cadence. A single c
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve all prior lab results with result dates. Build a timeline of every biomarker ever tested and when it was last measured.
+1. Call `getUserLabRecords` to retrieve all prior lab results with result dates. Build a timeline of every biomarker ever tested and when it was last measured.
 2. Call `searchBiomarkers` to retrieve current values and trends for key biomarker categories: metabolic, hormonal, inflammatory, cardiovascular, and thyroid.
 3. Apply standard retest interval logic by biomarker class:
    - **Annually (low urgency, stable):** HbA1c, lipid panel, thyroid (if normal), CBC.
@@ -52,7 +52,7 @@ Biomarker tracking loses its value without structured retest cadence. A single c
 7. Offer to initiate the ordering process for the top 1–3 priority items.
 
 ## When data is missing
-- If `getUserLabData` returns no prior results, this skill cannot calculate overdue intervals. Surface the `connect-my-data-audit` skill and recommend starting with a core health panel.
+- If `getUserLabRecords` returns no prior results, this skill cannot calculate overdue intervals. Surface the `connect-my-data-audit` skill and recommend starting with a core health panel.
 - If only a single prior result exists per biomarker (no trend), note that trends require at least two data points and highlight this as a motivation for the retest.
 - If a biomarker has no standard retest interval in the database, flag it for provider guidance rather than applying a default.
 

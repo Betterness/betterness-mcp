@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [listConnectedDevices, getAvailableIntegrations, getUserLabData, searchBiomarkers, getBiologicalAge, getActivityData, getVitals, getSleepData]
+  tools: [listConnectedDevices, listAvailableIntegrations, getUserLabRecords, searchBiomarkers, getBiologicalAge, getActivityData, getVitals, getSleepData]
   data: All available connected data, lab history, and biological age assessment
 skillgraph:
   domains: [data-management, longevity, diagnostics, biomarkers, recovery, fitness]
@@ -37,8 +37,8 @@ Most people have health data in six different places and a clear picture in none
 
 ## Protocol
 
-1. Call `listConnectedDevices` and `getAvailableIntegrations` simultaneously to map the full data landscape: what is connected and what is available but not yet connected.
-2. Call `getUserLabData` to retrieve all lab history. Note the most recent results per category and identify gaps.
+1. Call `listConnectedDevices` and `listAvailableIntegrations` simultaneously to map the full data landscape: what is connected and what is available but not yet connected.
+2. Call `getUserLabRecords` to retrieve all lab history. Note the most recent results per category and identify gaps.
 3. Call `searchBiomarkers` broadly across all categories to retrieve any biomarker data on file. Flag out-of-range values immediately.
 4. Call `getBiologicalAge` to retrieve the user's biological age assessment if available. Note the gap between chronological and biological age.
 5. Call `getActivityData`, `getVitals`, and `getSleepData` for the past 30 days. Build baseline summaries for each:
@@ -72,5 +72,5 @@ Most people have health data in six different places and a clear picture in none
 ## Action pathways
 - After the brief is delivered, surface the `priority-ranker` skill to turn domain gaps into a ranked action queue.
 - Surface `health-goals-dashboard-builder` to create a tracking dashboard anchored to the mission brief findings.
-- For any critical gap, initiate the specific fix: use `generateUserLinkToken` for device gaps or `purchaseLabTest` for lab gaps.
+- For any critical gap, initiate the specific fix: use `generateLinkToken` for device gaps or `purchaseLabTest` for lab gaps.
 - Set the `weekly-operator-review` skill as the ongoing operating cadence for the mission control system.

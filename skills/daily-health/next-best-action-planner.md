@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: beginner
 requires:
-  tools: [listConnectedDevices, getUserLabData, searchBiomarkers, listAvailableLabTests, getActivityData]
+  tools: [listConnectedDevices, getUserLabRecords, searchBiomarkers, listAvailableLabTests, getActivityData]
   data: Connected devices, lab history, biomarker reference data, available lab test catalog, recent activity
 skillgraph:
   domains: [decision-support, daily-habits, biomarkers, fitness]
@@ -39,7 +39,7 @@ Health optimization has a paradox of choice problem. Users with data often don't
 
 1. Call `listConnectedDevices` to determine what wearable data streams are currently flowing.
 2. Call `getActivityData` to assess recent training volume, consistency, and any red flags (overtraining or inactivity).
-3. Call `getUserLabData` to retrieve the most recent lab results and their dates.
+3. Call `getUserLabRecords` to retrieve the most recent lab results and their dates.
 4. Call `searchBiomarkers` with a priority biomarker set: HbA1c, fasting glucose, LDL, HDL, triglycerides, CRP (hs), vitamin D, ferritin, TSH, testosterone/estrogen. Flag any with no data or results older than 12 months.
 5. Call `listAvailableLabTests` to confirm which tests are orderable in case a lab action is recommended.
 6. Score candidate actions across three categories:
@@ -69,6 +69,6 @@ Health optimization has a paradox of choice problem. Users with data often don't
 
 ## Action pathways
 - If the recommended action is a lab order, hand off to `betterness-lab-ordering` to complete the workflow.
-- If the recommended action is a device connection, call `getAvailableIntegrations` and guide the user through linking.
+- If the recommended action is a device connection, call `listAvailableIntegrations` and guide the user through linking.
 - If the recommended action is a behavior change, surface the relevant skill (e.g., `zone-2-builder`, `sleep-debt-repayment-planner`).
 - Re-run this skill after each action is completed to surface the next priority.

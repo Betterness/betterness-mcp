@@ -1,10 +1,10 @@
 # Betterness MCP
 
-[![Tools: 32](https://img.shields.io/badge/tools-32-75FA79)](https://betterness.ai/mcp)
+[![Tools: 42](https://img.shields.io/badge/tools-42-75FA79)](https://betterness.ai/mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-F5C648)](LICENSE)
 [![Status: Beta](https://img.shields.io/badge/status-Beta-EF93F8)](https://betterness.ai)
 
-**The health action layer for AI agents.** 32 tools on Streamable HTTP. Connect any AI to wearable data, biomarkers, lab ordering, health intelligence, and premium OpenClaw workspaces through BetterClaw OS.
+**The health action layer for AI agents.** 42 tools on Streamable HTTP. Connect any AI to wearable data, biomarkers, lab ordering, health intelligence, and premium OpenClaw workspaces through BetterClaw OS.
 
 ---
 
@@ -29,14 +29,17 @@ If this is your first BetterClaw install, start with **Recovery**. It is the eas
 |------|-------------|
 | `getUserContactData` | Retrieve the authenticated user's contact and demographic information |
 | `updateUserContactData` | Update user contact details, preferences, or demographic fields |
+| `getProfile` | Retrieve the user's profile (alias for getUserContactData) |
+| `updateProfile` | Update the user's profile (alias for updateUserContactData) |
 
 ### Connected Devices
 
 | Tool | Description |
 |------|-------------|
 | `listConnectedDevices` | List all wearable devices and health platforms currently linked to the user |
-| `getAvailableIntegrations` | Return supported device and platform integrations (Oura, Whoop, Apple Health, etc.) |
-| `generateUserLinkToken` | Generate a short-lived token to initiate a device or platform OAuth connection |
+| `listAvailableIntegrations` | Return supported device and platform integrations (Oura, Whoop, Apple Health, etc.) |
+| `generateLinkToken` | Generate a short-lived token to initiate a device or platform OAuth connection |
+| `generateAppleHealthCode` | Generate a connection code for Apple HealthKit via the Junction app |
 | `disconnectIntegration` | Revoke access and unlink a connected device or platform |
 
 ### Health Data
@@ -57,13 +60,11 @@ If this is your first BetterClaw install, start with **Recovery**. It is the eas
 | `getLoincCodes` | Look up LOINC codes for standardized lab test identification |
 | `getBiologicalAge` | Calculate biological age from available biomarker and wearable data |
 
-### Lab Ordering
+### Lab Tests
 
 | Tool | Description |
 |------|-------------|
 | `listAvailableLabTests` | Browse the catalog of orderable lab tests with pricing and turnaround times |
-| `getUserLabData` | Retrieve historical lab results for the authenticated user |
-| `getLabOrderStatus` | Check the current status of a lab order |
 
 ### Payments
 
@@ -84,34 +85,56 @@ If this is your first BetterClaw install, start with **Recovery**. It is the eas
 | `rescheduleLabAppointment` | Move an existing lab appointment to a new date, time, or location |
 | `cancelLabAppointment` | Cancel a scheduled lab appointment |
 
-### Records
+### Lab Records & Results
 
 | Tool | Description |
 |------|-------------|
 | `getUserLabRecords` | Retrieve the user's historical lab records and results |
 | `getLabRecordDetail` | Get detailed information for a specific lab record |
-| `getLabResultUploadLink` | Generate a signed upload URL for submitting lab result documents |
+| `getLabResultUploadLink` | Generate a platform link for manual lab result upload |
+| `getLabResultFileUploadEndpoint` | Get the multipart upload URL for direct PDF upload |
+| `updateLabResultStatus` | Approve, rollback, or reprocess an uploaded lab result |
+| `updateLabResultBiomarker` | Modify or delete an individual biomarker value on a lab result |
+| `updateLabResultMetadata` | Update patient info, lab name, or collection date on a lab result |
 
-### Knowledge
-
-| Tool | Description |
-|------|-------------|
-| `knowledgeSearch` | Search the health knowledge base for articles, guides, and clinical references |
-| `getPartnerDetail` | Get detailed information about a specific health partner or provider |
-
-### Smart Listings
+### Health Profile
 
 | Tool | Description |
 |------|-------------|
-| `searchPartners` | Search for health partners and providers by specialty, location, or rating |
+| `getHealthProfileSchema` | List all health profile sections and question IDs with types and examples |
+| `getHealthProfile` | Retrieve all answered health profile questions |
+| `getHealthProfileSection` | Get answers for a specific health profile section |
+| `updateHealthProfile` | Patch health profile answers (only provided fields change) |
+| `resetHealthProfileSection` | Clear all answers in a health profile section |
+
+### Knowledge & Smart Listings
+
+| Tool | Description |
+|------|-------------|
+| `searchKnowledge` | Search the health knowledge base for articles, guides, and videos |
+| `searchSmartListings` | Search for wellness providers by name, location, or rating |
+| `getSmartListingDetail` | Get detailed information about a specific wellness provider |
 
 ---
 
 ## Quick Start
 
-### Claude Desktop
+### Auto-install via CLI (recommended)
 
-Add the following to your Claude Desktop MCP configuration:
+```bash
+npm install -g @betterness/cli
+betterness auth login
+betterness mcp install claude          # Claude Desktop
+betterness mcp install claude-code     # Claude Code
+betterness mcp install cursor          # Cursor
+betterness mcp install windsurf        # Windsurf
+```
+
+The CLI reads your stored credentials, backs up the client's config file, and merges the Betterness MCP server entry. See [betterness-cli](https://github.com/Betterness/betterness-cli) for the full CLI reference.
+
+### Manual configuration
+
+Add the following to your MCP client config:
 
 ```json
 {
@@ -126,13 +149,21 @@ Add the following to your Claude Desktop MCP configuration:
 
 Replace `YOUR_KEY` with your Betterness API key. Get one at [betterness.ai/builders](https://betterness.ai/builders).
 
+| Client | Config path |
+|--------|-------------|
+| Claude Desktop | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| Claude Code (global) | `~/.claude/settings.json` |
+| Claude Code (project) | `.mcp.json` |
+| Cursor | `.cursor/mcp.json` |
+| Windsurf | `~/.codeium/windsurf/mcp_config.json` |
+
 ### ChatGPT Actions
 
 ChatGPT Actions require an HTTP proxy to bridge the MCP transport. See [docs/clients/chatgpt-actions.md](docs/clients/chatgpt-actions.md) for the full setup guide, including the OpenAPI spec and proxy configuration.
 
 ### Clawbot / OpenClaw
 
-Clawbot is an OpenClaw agent that connects to Betterness MCP natively. Register your bot at [betterness.ai/builders](https://betterness.ai/builders), link it to your Betterness workspace, and the 32 health tools are available immediately -- no additional configuration required. Clawbot's SKILLS architecture routes tool calls through the SkillGraph for intelligent multi-step health workflows.
+Clawbot is an OpenClaw agent that connects to Betterness MCP natively. Register your bot at [betterness.ai/builders](https://betterness.ai/builders), link it to your Betterness workspace, and the 42 health tools are available immediately -- no additional configuration required. Clawbot's SKILLS architecture routes tool calls through the SkillGraph for intelligent multi-step health workflows.
 
 If you want a premium OpenClaw workspace rather than a basic MCP connection, start with [BetterClaw OS](starters/betterclaw-os/README.md) and use the [Recovery package](starters/betterclaw-os/recovery/README.md) as the first install.
 
