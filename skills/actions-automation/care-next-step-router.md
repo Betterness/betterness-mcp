@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [searchBiomarkers, getUserLabData, listAvailableLabTests, listConnectedDevices]
+  tools: [searchBiomarkers, getUserLabRecords, listAvailableLabTests, listConnectedDevices]
   data: Current lab results, biomarker values with reference ranges, and connected device coverage
 skillgraph:
   domains: [diagnostics, care-coordination, biomarkers, labs]
@@ -37,7 +37,7 @@ After receiving lab results or when reviewing a health snapshot, most people don
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve the most recent lab results. Flag any results returned in the past 30 days as the primary input for routing.
+1. Call `getUserLabRecords` to retrieve the most recent lab results. Flag any results returned in the past 30 days as the primary input for routing.
 2. Call `searchBiomarkers` to retrieve current values, trends, and out-of-range flags for all available biomarkers.
 3. Call `listConnectedDevices` to understand what wearable and device data is actively contributing to the health picture.
 4. Apply a three-tier triage framework to all findings:
@@ -53,7 +53,7 @@ After receiving lab results or when reviewing a health snapshot, most people don
 8. Deliver a single prioritized action list: top 3 next steps with clear rationale.
 
 ## When data is missing
-- If `getUserLabData` returns no results, this skill cannot route based on lab data. Direct to the `connect-my-data-audit` skill and recommend starting with a baseline lab panel.
+- If `getUserLabRecords` returns no results, this skill cannot route based on lab data. Direct to the `connect-my-data-audit` skill and recommend starting with a baseline lab panel.
 - If `searchBiomarkers` returns no out-of-range values, confirm that monitoring is on track and route to the `retest-reminder-orchestrator` to maintain the cadence.
 - Never fabricate out-of-range status. Only flag what the data actually shows.
 

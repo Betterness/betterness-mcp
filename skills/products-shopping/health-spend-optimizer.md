@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: intermediate
 requires:
-  tools: [getUserLabData, listConnectedDevices, listAvailableLabTests]
+  tools: [getUserLabRecords, listConnectedDevices, listAvailableLabTests]
   data: Connected devices list, existing lab results, available test catalog for cost reference
 skillgraph:
   domains: [spending, health-roi, devices, supplements, labs]
@@ -38,7 +38,7 @@ Most health consumers overspend on supplements and services they don't need and 
 ## Protocol
 
 1. Call `listConnectedDevices` to enumerate what devices the user currently pays for (subscriptions or hardware).
-2. Call `getUserLabData` to assess the breadth and recency of lab data — labs are often the highest-ROI health investment and the most underused.
+2. Call `getUserLabRecords` to assess the breadth and recency of lab data — labs are often the highest-ROI health investment and the most underused.
 3. Call `listAvailableLabTests` to check what testing is available and approximate costs for comparison.
 4. Ask the user to share their current monthly health spend categories:
    - Wearable device subscriptions (WHOOP, Oura, Garmin Connect IQ, etc.)

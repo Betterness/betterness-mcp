@@ -101,7 +101,7 @@ app.get("/api/biological-age", async (req, res) => {
 });
 
 app.get("/api/lab-data", async (req, res) => {
-  const result = await callMcpTool("getUserLabData", {});
+  const result = await callMcpTool("getUserLabRecords", {});
   res.json(result);
 });
 
@@ -203,7 +203,7 @@ paths:
                 type: object
   /api/lab-data:
     get:
-      operationId: getUserLabData
+      operationId: getUserLabRecords
       summary: Get user lab results
       responses:
         "200":

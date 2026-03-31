@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [searchBiomarkers, getUserLabData, listAvailableLabTests]
+  tools: [searchBiomarkers, getUserLabRecords, listAvailableLabTests]
   data: Existing lab results with dates, biomarker reference ranges, available test catalog
 skillgraph:
   domains: [biomarkers, preventive-health, labs, clinical]
@@ -37,7 +37,7 @@ Lab results decay in value over time. A testosterone result from 18 months ago t
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve all available lab results with their collection dates.
+1. Call `getUserLabRecords` to retrieve all available lab results with their collection dates.
 2. Call `searchBiomarkers` with a priority list to get reference ranges and clinical context for each biomarker found in the results.
 3. Call `listAvailableLabTests` to confirm which panels are available for ordering in case a retest recommendation requires it.
 4. Apply standard retest intervals by biomarker category:
@@ -57,7 +57,7 @@ Lab results decay in value over time. A testosterone result from 18 months ago t
 8. If the user has made an intervention since last test (new supplement, medication, diet change), shorten the retest interval to 90 days to capture effect.
 
 ## When data is missing
-- If `getUserLabData` returns no results, skip the retest analysis entirely and surface `health-data-coverage-audit` and `betterness-lab-ordering` as the starting point.
+- If `getUserLabRecords` returns no results, skip the retest analysis entirely and surface `health-data-coverage-audit` and `betterness-lab-ordering` as the starting point.
 - If result dates are missing from records, note the gap and use the most conservative retest interval.
 - If a biomarker is in the user's results but not found in `searchBiomarkers`, apply a default 12-month interval and flag for practitioner review.
 - Do not fabricate retest urgency for biomarkers with missing dates.

@@ -9,7 +9,7 @@ status: production
 skill_type: action
 difficulty: beginner
 requires:
-  tools: [getUserLabData, initializeLabOrder, searchLabServiceCenters]
+  tools: [getUserLabRecords, initializeLabOrder, searchLabServiceCenters]
   data: Existing lab order status and user location for service center discovery
 skillgraph:
   domains: [diagnostics, labs, appointments, care-coordination]
@@ -37,7 +37,7 @@ The gap between purchasing a lab test and actually going to the draw site is whe
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve all lab orders. Classify each by status:
+1. Call `getUserLabRecords` to retrieve all lab orders. Classify each by status:
    - **Unscheduled:** Order exists, no appointment booked. Flag as action required.
    - **Scheduled:** Appointment booked. Confirm date and provide pre-visit reminders.
    - **Complete:** Results returned. No scheduling action needed — offer to surface results review.
@@ -51,7 +51,7 @@ The gap between purchasing a lab test and actually going to the draw site is whe
 9. Confirm that all pending orders have been addressed before closing the skill.
 
 ## When data is missing
-- If `getUserLabData` returns no orders, inform the user that no pending lab orders are on file and surface `listAvailableLabTests` to explore testing options.
+- If `getUserLabRecords` returns no orders, inform the user that no pending lab orders are on file and surface `listAvailableLabTests` to explore testing options.
 - If `initializeLabOrder` is needed but order details are incomplete, ask the user for the order ID or test name before proceeding.
 - If `searchLabServiceCenters` returns no nearby locations, ask for a broader geographic area or an alternate zip code.
 - If the user's test requires fasting and they have recently eaten, note the requirement and suggest scheduling for the following morning.

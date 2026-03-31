@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: intermediate
 requires:
-  tools: [getActivityData, getVitals, getSleepData, getBodyComposition, searchBiomarkers, getUserLabData, getBiologicalAge]
+  tools: [getActivityData, getVitals, getSleepData, getBodyComposition, searchBiomarkers, getUserLabRecords, getBiologicalAge]
   data: Full spectrum of client health data — wearable signals, body composition, lab results, and biological age
 skillgraph:
   domains: [coaching, biomarkers, performance, recovery, body-composition, longevity]
@@ -42,7 +42,7 @@ Coaches spend precious session time gathering information that should have been 
 3. Call `getSleepData` for the past 30 days. Extract: average sleep duration and efficiency, sleep debt accumulation (nights under threshold), and trend direction.
 4. Call `getBodyComposition` to retrieve the most recent body composition snapshot: body fat %, lean muscle mass, visceral fat rating, and trend since last measurement.
 5. Call `searchBiomarkers` to retrieve all available biomarker data. Flag any out-of-range values or concerning trends.
-6. Call `getUserLabData` to check for new lab results since the last brief or session.
+6. Call `getUserLabRecords` to check for new lab results since the last brief or session.
 7. Call `getBiologicalAge` to retrieve the biological age reading and trend.
 8. Assemble the Client Brief with these sections:
    - **Executive Summary:** 3 bullet points covering the most important things the coach needs to know right now.
@@ -57,7 +57,7 @@ Coaches spend precious session time gathering information that should have been 
 ## When data is missing
 - If `getBodyComposition` returns no recent data, flag it in the brief and note when the last measurement was taken (if ever).
 - If `getBiologicalAge` returns no data, note that biological age tracking is unavailable and suggest it as a client onboarding priority.
-- If `searchBiomarkers` and `getUserLabData` both return no results, include a "Lab Data: None on file" section with a recommendation to establish a baseline panel.
+- If `searchBiomarkers` and `getUserLabRecords` both return no results, include a "Lab Data: None on file" section with a recommendation to establish a baseline panel.
 - Always generate a brief from available data; do not withhold the brief because one data source is empty.
 
 ## Connection upsells

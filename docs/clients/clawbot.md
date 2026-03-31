@@ -211,7 +211,7 @@ Expected: Clawbot calls `getSleepData`, `getVitals`, `getActivityData`, and `get
 ```
 What biomarkers am I missing data for? Suggest labs to order.
 ```
-Expected: Calls `getUserLabData` and `listAvailableLabTests`, identifies gaps, and recommends specific panels.
+Expected: Calls `getUserLabRecords` and `listAvailableLabTests`, identifies gaps, and recommends specific panels.
 
 ### 5. Scheduled mission
 Trigger your daily brief mission manually and confirm it executes the full skill chain and delivers results.

@@ -52,7 +52,7 @@ Generate data-driven impact reports that show measurable outcomes:
 | `getSleepData` | Monitor participant sleep quality during multi-day events |
 | `getVitals` | Track HRV and stress signals across the event |
 | `getActivityData` | Monitor activity levels and strain during physical events |
-| `getUserLabData` | Pre/post event biomarker comparisons |
+| `getUserLabRecords` | Pre/post event biomarker comparisons |
 | `listAvailableLabTests` | Design event-specific lab panels |
 | `purchaseLabTest` | Enable participants to order panels through the event |
 | `getBodyComposition` | Track body composition changes for fitness retreats |

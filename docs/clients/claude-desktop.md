@@ -85,7 +85,7 @@ Claude will call `listConnectedDevices` and return your linked wearables and dat
 Show me my most recent lab results.
 ```
 
-Claude will call `getUserLabData` and display your biomarker panels.
+Claude will call `getUserLabRecords` and display your biomarker panels.
 
 ### 3. Search biomarkers
 
@@ -104,10 +104,10 @@ Once connected, try these to explore your health data:
 | "How did I sleep last night?" | `getSleepData`, `getSleepStages` |
 | "Am I ready for a hard workout today?" | `getSleepData`, `getVitals`, `getActivityData` |
 | "What's my biological age trend?" | `getBiologicalAge` |
-| "Which labs should I order next?" | `getUserLabData`, `listAvailableLabTests` |
+| "Which labs should I order next?" | `getUserLabRecords`, `listAvailableLabTests` |
 | "Compare my HRV this week vs last week" | `getVitals` |
 | "Give me a full health briefing" | Multiple tools composed together |
-| "What biomarkers are outside normal range?" | `getUserLabData`, `searchBiomarkers` |
+| "What biomarkers are outside normal range?" | `getUserLabRecords`, `searchBiomarkers` |
 | "Help me design a sleep optimization protocol" | `getSleepData`, `getSleepStages`, `getVitals` |
 
 ## Troubleshooting

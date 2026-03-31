@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: beginner
 requires:
-  tools: [listConnectedDevices, getAvailableIntegrations, getUserLabData, searchBiomarkers]
+  tools: [listConnectedDevices, listAvailableIntegrations, getUserLabRecords, searchBiomarkers]
   data: Connected device list, available integrations catalog, any existing lab results
 skillgraph:
   domains: [data-coverage, onboarding, biomarkers, devices]
@@ -38,8 +38,8 @@ Most people track some things but miss others — they have steps but no HRV, or
 ## Protocol
 
 1. Call `listConnectedDevices` to enumerate all currently linked wearables and health devices.
-2. Call `getAvailableIntegrations` to retrieve the full catalog of integrations the platform supports — including any not yet connected.
-3. Call `getUserLabData` to check for any existing lab results on file and their dates.
+2. Call `listAvailableIntegrations` to retrieve the full catalog of integrations the platform supports — including any not yet connected.
+3. Call `getUserLabRecords` to check for any existing lab results on file and their dates.
 4. Call `searchBiomarkers` with a broad set of tier-1 biomarkers (glucose, HbA1c, lipid panel, CRP, vitamin D, testosterone/estrogen, ferritin, TSH, homocysteine) to check which ones have reference data or results available.
 5. Score coverage across four domains:
    - **Wearable coverage:** 0–3 stars based on whether HRV, sleep staging, and continuous HR are present
@@ -54,7 +54,7 @@ Most people track some things but miss others — they have steps but no HRV, or
 
 ## When data is missing
 - If `listConnectedDevices` returns an empty list, treat the device domain as fully uncovered and recommend wearable connection as the top priority.
-- If `getUserLabData` returns no results, flag lab coverage as zero and surface the `betterness-lab-ordering` skill.
+- If `getUserLabRecords` returns no results, flag lab coverage as zero and surface the `betterness-lab-ordering` skill.
 - If `searchBiomarkers` returns limited data, work with what is available — do not assume coverage that isn't confirmed.
 - Always be transparent about what is unknown rather than papering over gaps.
 
@@ -66,5 +66,5 @@ Most people track some things but miss others — they have steps but no HRV, or
 
 ## Action pathways
 - For each Tier 1 gap, surface the relevant skill: `betterness-lab-ordering` for missing labs, `next-best-action-planner` for integrated prioritization.
-- If wearable coverage is zero, offer to walk the user through `getAvailableIntegrations` to pick a device.
+- If wearable coverage is zero, offer to walk the user through `listAvailableIntegrations` to pick a device.
 - If labs are outdated (>12 months), surface `lab-retest-planner` to schedule retesting.

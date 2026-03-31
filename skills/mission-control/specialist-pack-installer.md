@@ -9,7 +9,7 @@ status: production
 skill_type: action
 difficulty: beginner
 requires:
-  tools: [listConnectedDevices, getUserLabData]
+  tools: [listConnectedDevices, getUserLabRecords]
   data: Connected device inventory and existing lab data to assess readiness for specialist activation
 skillgraph:
   domains: [data-management, setup, specialist-activation, monitoring]
@@ -44,7 +44,7 @@ Specialist skills need data to work. A longevity specialist without lab data, or
    - **Metabolic Health Pack:** Glucose monitoring, lipid health, insulin sensitivity, body composition.
    - **Executive Wellness Pack:** Stress, cognitive performance, sleep quality, cardiovascular risk.
 2. Call `listConnectedDevices` to assess the current device landscape.
-3. Call `getUserLabData` to retrieve any existing lab data relevant to the chosen specialty.
+3. Call `getUserLabRecords` to retrieve any existing lab data relevant to the chosen specialty.
 4. Evaluate data readiness against the chosen pack's minimum requirements:
    - **Longevity Pack:** Requires at least one lab result set + one wearable for HRV.
    - **Hormonal Health Pack:** Requires hormone panel data (FSH, LH, estradiol, progesterone) or readiness to order it.
@@ -59,13 +59,13 @@ Specialist skills need data to work. A longevity specialist without lab data, or
 7. Offer to run the first specialist analysis immediately if sufficient data is already available.
 
 ## When data is missing
-- If `listConnectedDevices` returns no devices and `getUserLabData` returns no labs, the user is starting from zero. Recommend completing the `mission-control-bootstrap` first to build a data foundation before activating a specialist pack.
+- If `listConnectedDevices` returns no devices and `getUserLabRecords` returns no labs, the user is starting from zero. Recommend completing the `mission-control-bootstrap` first to build a data foundation before activating a specialist pack.
 - If partial data meets some but not all requirements, activate the pack in a "limited mode" — make clear what will improve once missing data is connected.
 - Never pretend a specialist pack is fully operational when key data is absent.
 
 ## Connection upsells
 - Each specialist pack has tailored connection recommendations surfaced during the readiness assessment step.
-- For any missing device, use `getAvailableIntegrations` to surface the specific connection path.
+- For any missing device, use `listAvailableIntegrations` to surface the specific connection path.
 - Prompt: "Install a specialist pack to get domain-expert health intelligence built on your actual data — not generic advice."
 
 ## Action pathways

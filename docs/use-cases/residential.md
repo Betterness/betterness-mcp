@@ -55,7 +55,7 @@ The agent monitors for patterns that precede health events:
 | `getVitals` | Track resting heart rate, HRV, respiratory rate baselines |
 | `getActivityData` | Monitor activity levels, detect isolation or mobility decline |
 | `getBodyComposition` | Track weight changes, detect unintended loss or gain |
-| `getUserLabData` | Population lab result tracking and gap identification |
+| `getUserLabRecords` | Population lab result tracking and gap identification |
 | `searchBiomarkers` | Search for specific markers across the resident population |
 | `listAvailableLabTests` | Plan facility-wide lab screening programs |
 | `purchaseLabTest` | Order lab panels for residents through the platform |

@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [getUserContactData, searchBiomarkers, listAvailableLabTests, getUserLabData]
+  tools: [getUserContactData, searchBiomarkers, listAvailableLabTests, getUserLabRecords]
   data: User age, sex, family history (if available), existing lab results and dates
 skillgraph:
   domains: [preventive-health, longevity, clinical, biomarkers]
@@ -38,7 +38,7 @@ Most preventive screenings are reactive, minimal, and years overdue. This skill 
 ## Protocol
 
 1. Call `getUserContactData` to retrieve age, sex, and location — core inputs for risk stratification and screening eligibility.
-2. Call `getUserLabData` to check which screenings have already been done and when.
+2. Call `getUserLabRecords` to check which screenings have already been done and when.
 3. Call `searchBiomarkers` with a comprehensive screening marker set to retrieve clinical thresholds and screening intervals.
 4. Call `listAvailableLabTests` to confirm which screenings are orderable through the platform.
 5. Generate the screening calendar by category:

@@ -9,7 +9,7 @@ status: production
 skill_type: workflow
 difficulty: intermediate
 requires:
-  tools: [listConnectedDevices, getUserLabData, searchBiomarkers]
+  tools: [listConnectedDevices, getUserLabRecords, searchBiomarkers]
   data: Connected device inventory, existing lab data, and biomarker monitoring goals
 skillgraph:
   domains: [data-management, automation, biomarkers, monitoring]
@@ -38,7 +38,7 @@ Health monitoring without automation requires constant manual effort that most p
 ## Protocol
 
 1. Call `listConnectedDevices` to retrieve all active device connections. Categorize by data type: activity, sleep/HRV, body composition, continuous glucose.
-2. Call `getUserLabData` to retrieve lab history. Identify which biomarker categories have been tested and when.
+2. Call `getUserLabRecords` to retrieve lab history. Identify which biomarker categories have been tested and when.
 3. Call `searchBiomarkers` to retrieve any actively tracked biomarkers with values available.
 4. Based on connected devices and data richness, design a weekly monitoring cadence with three tiers:
    - **Daily automated signals (from wearables):** HRV morning readiness, sleep quality score, activity load summary. These are available automatically from connected devices.
@@ -51,7 +51,7 @@ Health monitoring without automation requires constant manual effort that most p
 
 ## When data is missing
 - If `listConnectedDevices` returns nothing, the automation setup starts with a device connection recommendation. Surface the `connect-my-data-audit` skill as Step 0.
-- If `getUserLabData` returns no results, the monthly biomarker review tier is empty — flag this and recommend a baseline lab panel.
+- If `getUserLabRecords` returns no results, the monthly biomarker review tier is empty — flag this and recommend a baseline lab panel.
 - If only one device is connected (e.g., only steps from Apple Health), design a minimal automation around what is available and clearly identify what adding a sleep/HRV device would unlock.
 
 ## Connection upsells
@@ -62,5 +62,5 @@ Health monitoring without automation requires constant manual effort that most p
 
 ## Action pathways
 - After setup is complete, surface the `weekly-operator-review` skill as the operating cadence for the system that was just configured.
-- For any device gap identified, use `generateUserLinkToken` via `getAvailableIntegrations` to initiate the connection flow.
+- For any device gap identified, use `generateLinkToken` via `listAvailableIntegrations` to initiate the connection flow.
 - Surface the `mission-control-bootstrap` skill if the user wants to build a full health command center rather than individual automations.

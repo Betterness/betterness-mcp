@@ -9,7 +9,7 @@ status: production
 skill_type: analysis
 difficulty: intermediate
 requires:
-  tools: [searchBiomarkers, getUserLabData]
+  tools: [searchBiomarkers, getUserLabRecords]
   data: The supplement's full ingredient list, user's relevant biomarker results
 skillgraph:
   domains: [supplements, biomarkers, safety, nutrition]
@@ -37,7 +37,7 @@ Most people take supplements without knowing their baseline levels. This means t
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve the user's recent biomarker results — specifically: vitamin D, B12, ferritin, magnesium, zinc, omega-3 index, liver enzymes (ALT, AST), kidney markers (creatinine, GFR).
+1. Call `getUserLabRecords` to retrieve the user's recent biomarker results — specifically: vitamin D, B12, ferritin, magnesium, zinc, omega-3 index, liver enzymes (ALT, AST), kidney markers (creatinine, GFR).
 2. Call `searchBiomarkers` for each active ingredient in the supplement to retrieve:
    - Normal reference range
    - Toxicity threshold (upper tolerable limit)

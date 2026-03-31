@@ -9,7 +9,7 @@ status: production
 skill_type: action
 difficulty: beginner
 requires:
-  tools: [getUserLabData, searchLabServiceCenters, getServiceCenterSlots, bookLabAppointment]
+  tools: [getUserLabRecords, searchLabServiceCenters, getServiceCenterSlots, bookLabAppointment]
   data: Existing lab orders, user location, and available appointment windows
 skillgraph:
   domains: [diagnostics, labs, appointments, care-coordination]
@@ -37,7 +37,7 @@ Lab test purchase-to-completion rates are lower than they should be. People buy 
 
 ## Protocol
 
-1. Call `getUserLabData` to retrieve all lab orders on file. Identify:
+1. Call `getUserLabRecords` to retrieve all lab orders on file. Identify:
    - Tests with results already returned (complete).
    - Tests with orders placed but no appointment booked (action needed: schedule).
    - Tests with appointments booked but no results yet (monitor: pending).
@@ -55,7 +55,7 @@ Lab test purchase-to-completion rates are lower than they should be. People buy 
 10. Set a follow-up reminder to check results and surface the `care-next-step-router` skill once results are returned.
 
 ## When data is missing
-- If `getUserLabData` returns no orders, this skill cannot proceed. Surface the `lab-scheduling-reminder` skill or direct the user to purchase a test first.
+- If `getUserLabRecords` returns no orders, this skill cannot proceed. Surface the `lab-scheduling-reminder` skill or direct the user to purchase a test first.
 - If `searchLabServiceCenters` returns no results for the given location, ask for an alternate zip code or a broader city search.
 - If `getServiceCenterSlots` returns no available slots at the preferred center, present the next nearest center from the search results.
 - If the user declines to book now, offer to set a reminder to return to this skill within 48 hours.

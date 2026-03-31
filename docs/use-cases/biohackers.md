@@ -40,7 +40,7 @@ The agent can identify patterns that no single data source reveals:
 | Tool | What It Provides |
 |------|-----------------|
 | `getBiologicalAge` | Biological age calculations, clock breakdowns, trend over time |
-| `getUserLabData` | All lab results across providers, with reference ranges |
+| `getUserLabRecords` | All lab results across providers, with reference ranges |
 | `searchBiomarkers` | Search and retrieve specific biomarker history |
 | `listAvailableLabTests` | Browse available lab panels for ordering |
 | `purchaseLabTest` | Order lab tests directly through Betterness |
@@ -56,7 +56,7 @@ The agent can identify patterns that no single data source reveals:
 **Prompt**: "Run a full quarterly health audit. Compare my current biomarkers against 3 months ago, identify any concerning trends, flag gaps in my testing, and recommend what to order next."
 
 The agent:
-1. Calls `getUserLabData` to pull all recent lab results
+1. Calls `getUserLabRecords` to pull all recent lab results
 2. Calls `searchBiomarkers` for key markers across your history
 3. Calls `getBiologicalAge` for your current bio age and trend
 4. Calls `getVitals` for wearable trends over the quarter
@@ -87,7 +87,7 @@ The agent:
 
 The agent:
 1. Calls `getBiologicalAge` for multi-clock results
-2. Calls `getUserLabData` for biomarkers that feed into each aging domain
+2. Calls `getUserLabRecords` for biomarkers that feed into each aging domain
 3. Cross-references metabolic, inflammatory, hormonal, and cardiovascular markers
 
 **Output**: A system-by-system breakdown:

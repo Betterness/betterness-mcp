@@ -9,7 +9,7 @@ status: production
 skill_type: action
 difficulty: beginner
 requires:
-  tools: [listConnectedDevices, getAvailableIntegrations, getUserLabData, searchBiomarkers]
+  tools: [listConnectedDevices, listAvailableIntegrations, getUserLabRecords, searchBiomarkers]
   data: Connected device list, available integrations, existing lab results
 skillgraph:
   domains: [data-management, diagnostics, setup, biomarkers]
@@ -38,8 +38,8 @@ Most people have fragmented health data — a wearable here, a lab result there,
 ## Protocol
 
 1. Call `listConnectedDevices` to retrieve all currently connected wearables, scales, and devices.
-2. Call `getAvailableIntegrations` to retrieve the full list of integrations available on the platform that are not yet connected.
-3. Call `getUserLabData` to retrieve any existing lab results on file. Note the date of the most recent result and which panels are represented.
+2. Call `listAvailableIntegrations` to retrieve the full list of integrations available on the platform that are not yet connected.
+3. Call `getUserLabRecords` to retrieve any existing lab results on file. Note the date of the most recent result and which panels are represented.
 4. Call `searchBiomarkers` with a broad query to identify which biomarker categories have data on file (e.g., metabolic, hormonal, inflammatory, cardiovascular).
 5. Score coverage across five health intelligence domains:
    - **Activity & movement:** Is there a wearable tracking steps, workouts, and strain? (0/1/2 signal sources)
@@ -49,11 +49,11 @@ Most people have fragmented health data — a wearable here, a lab result there,
    - **Biological age:** Has a biological age or longevity panel been run? (0/1 signal sources)
 6. Produce a coverage scorecard (out of 9 possible signals).
 7. Generate a prioritized three-action plan to close the most impactful gaps first, ranked by health ROI.
-8. For each missing integration, provide the specific connection step using `generateUserLinkToken` if needed.
+8. For each missing integration, provide the specific connection step using `generateLinkToken` if needed.
 
 ## When data is missing
 - If `listConnectedDevices` returns nothing, treat this as a Day 1 setup and focus the entire audit on highest-priority first connections.
-- If `getUserLabData` returns no results, flag the lack of baseline lab data as the highest-priority gap regardless of wearable coverage.
+- If `getUserLabRecords` returns no results, flag the lack of baseline lab data as the highest-priority gap regardless of wearable coverage.
 - If `searchBiomarkers` returns no data, note that biomarker search requires at least one lab result to be on file.
 
 ## Connection upsells
@@ -63,6 +63,6 @@ Most people have fragmented health data — a wearable here, a lab result there,
 - Prompt: "Complete your data audit to see your health intelligence coverage score and exactly what to connect next."
 
 ## Action pathways
-- Use `generateUserLinkToken` to initiate connection for any integration identified as a priority gap.
+- Use `generateLinkToken` to initiate connection for any integration identified as a priority gap.
 - If lab data is absent, surface `listAvailableLabTests` and offer to initiate a core health panel order.
 - After completing the audit, surface the `mission-control-bootstrap` skill to build a full health command center on top of the newly completed data foundation.
